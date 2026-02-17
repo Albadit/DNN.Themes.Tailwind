@@ -2,7 +2,7 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
     <!-- Skin Package -->
-    <package name="TailwindDNN" type="Skin" version="1.0.0">
+    <package name="TailwindDNN" type="Skin" version="01.00.00">
       <friendlyName>TailwindDNN</friendlyName>
       <description>A modern, responsive DNN 10 skin built with Tailwind CSS 4.1. Features a clean design with mobile-first responsive layout, sticky navigation, hero sections, and custom containers.</description>
       <owner>
@@ -32,6 +32,48 @@
             <basePath>Portals\_default\Skins\TailwindDNN</basePath>
             <resourceFile>
               <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+      </components>
+    </package>
+
+    <!-- Container Package -->
+    <package name="TailwindDNN Containers" type="Container" version="01.00.00">
+      <friendlyName>TailwindDNN Containers</friendlyName>
+      <description>Containers for the TailwindDNN skin.</description>
+      <owner>
+        <name>TailwindDNN</name>
+        <organization>TailwindDNN</organization>
+        <url>https://example.com</url>
+        <email>info@example.com</email>
+      </owner>
+      <license src="License.txt" />
+      <releaseNotes src="ReleaseNotes.txt" />
+      <components>
+        <component type="Container">
+          <containerFiles>
+            <basePath>Portals\_default\Containers\TailwindDNN</basePath>
+            <containerName>TailwindDNN</containerName>
+            <containerFile>
+              <path></path>
+              <name>Title.ascx</name>
+            </containerFile>
+            <containerFile>
+              <path></path>
+              <name>NoTitle.ascx</name>
+            </containerFile>
+            <containerFile>
+              <path></path>
+              <name>Card.ascx</name>
+            </containerFile>
+          </containerFiles>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>Portals\_default\Containers\TailwindDNN</basePath>
+            <resourceFile>
+              <name>ContainerResources.zip</name>
             </resourceFile>
           </resourceFiles>
         </component>

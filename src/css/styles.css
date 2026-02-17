@@ -4,6 +4,12 @@
 
 @import "tailwindcss";
 
+@source "../../**/*.ascx";
+@source "../../menus/**/*.txt";
+@source "../../containers/**/*.ascx";
+
+@plugin "@tailwindcss/typography";
+
 /* ==========================================================================
    Theme Configuration
    ========================================================================== */
@@ -34,6 +40,12 @@
   --color-secondary-800: #166534;
   --color-secondary-900: #14532d;
   --color-secondary-950: #052e16;
+
+  /* Tertiary Colors */
+  --color-tertiary: #f8fafc;
+  --color-tertiary-50: #f8fafc;
+  --color-tertiary-100: #f1f5f9;
+  --color-tertiary-200: #e2e8f0;
 
   /* Accent Colors */
   --color-accent-50: #faf5ff;

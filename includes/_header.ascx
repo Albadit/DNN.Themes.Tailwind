@@ -9,7 +9,7 @@
 
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex lg:items-center lg:gap-1" aria-label="Main Navigation">
-                <dnn:MENU runat="server" id="dnnMENU" MenuStyle="MegaMenu" NodeSelector="*,0,2" />
+                <dnn:MENU runat="server" id="dnnMENU" MenuStyle="menus/MegaMenu" NodeSelector="*,0,2" />
             </nav>
 
             <!-- Right Side Actions -->
@@ -44,7 +44,7 @@
     <!-- Mobile Navigation Menu -->
     <div id="mobile-menu" class="hidden border-t border-gray-100 lg:hidden">
         <div class="mx-auto max-w-7xl space-y-1 px-4 pb-4 pt-2">
-            <dnn:MENU runat="server" id="dnnMENU_Mobile" MenuStyle="MegaMenu" NodeSelector="*,0,2" />
+            <dnn:MENU runat="server" id="dnnMENU_Mobile" MenuStyle="menus/MegaMenu" NodeSelector="*,0,2" />
         </div>
         <div class="border-t border-gray-100 px-4 py-3">
             <div class="flex items-center gap-3 text-sm">

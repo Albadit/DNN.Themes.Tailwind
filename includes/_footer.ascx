@@ -4,31 +4,19 @@
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
 
             <!-- Footer Pane 1 -->
-            <div class="dnn-pane" id="FooterPane1" runat="server"
-                 containertype="G"
-                 containername="TailwindDNN"
-                 containersrc="containers/default.ascx">
+            <div class="dnn-pane" id="FooterPane1" runat="server">
             </div>
 
             <!-- Footer Pane 2 -->
-            <div class="dnn-pane" id="FooterPane2" runat="server"
-                 containertype="G"
-                 containername="TailwindDNN"
-                 containersrc="containers/default.ascx">
+            <div class="dnn-pane" id="FooterPane2" runat="server">
             </div>
 
             <!-- Footer Pane 3 -->
-            <div class="dnn-pane" id="FooterPane3" runat="server"
-                 containertype="G"
-                 containername="TailwindDNN"
-                 containersrc="containers/default.ascx">
+            <div class="dnn-pane" id="FooterPane3" runat="server">
             </div>
 
             <!-- Footer Pane 4 -->
-            <div class="dnn-pane" id="FooterPane4" runat="server"
-                 containertype="G"
-                 containername="TailwindDNN"
-                 containersrc="containers/default.ascx">
+            <div class="dnn-pane" id="FooterPane4" runat="server">
             </div>
         </div>
     </div>

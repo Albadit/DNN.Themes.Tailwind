@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "DNN 10 Skin with Tailwind CSS 4.1",
   "scripts": {
-    "dev": "npx @tailwindcss/cli -i ./src/css/main.css -o ./src/css/style.min.css --watch",
-    "build": "npx @tailwindcss/cli -i ./src/css/main.css -o ./src/css/style.min.css --minify",
+    "dev": "npx @tailwindcss/cli -i ./src/css/styles.css -o ./src/css/styles.min.css --watch",
+    "build": "npx @tailwindcss/cli -i ./src/css/styles.css -o ./src/css/styles.min.css --minify",
     "package": "powershell -ExecutionPolicy Bypass -File ./build.ps1"
   },
   "devDependencies": {
-    "tailwindcss": "^4.1.0",
-    "@tailwindcss/cli": "^4.1.0"
+    "@tailwindcss/cli": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.19"
   }
 }
