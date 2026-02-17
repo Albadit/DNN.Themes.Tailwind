@@ -1,8 +1,8 @@
-<!--#include file="components/_registers.ascx" -->
-<!--#include file="components/_includes.ascx" -->
+<!--#include file="includes/_registers.ascx" -->
+<!--#include file="includes/_includes.ascx" -->
 
 <!-- Header/NavBar -->
-<!--#include file="components/_header.ascx" -->
+<!--#include file="includes/_header.ascx" -->
 
 <!-- Main Content -->
 <main>
@@ -28,4 +28,4 @@
 </main>
 
 <!-- Footer -->
-<!--#include file="components/_footer.ascx" -->
+<!--#include file="includes/_footer.ascx" -->

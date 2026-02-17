@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <!-- Skin Package -->
+    <package name="TailwindDNN" type="Skin" version="1.0.0">
+      <friendlyName>TailwindDNN</friendlyName>
+      <description>A modern, responsive DNN 10 skin built with Tailwind CSS 4.1. Features a clean design with mobile-first responsive layout, sticky navigation, hero sections, and custom containers.</description>
+      <owner>
+        <name>TailwindDNN</name>
+        <organization>TailwindDNN</organization>
+        <url>https://example.com</url>
+        <email>info@example.com</email>
+      </owner>
+      <license src="License.txt" />
+      <releaseNotes src="ReleaseNotes.txt" />
+      <dependencies>
+        <dependency type="CoreVersion">10.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Skin">
+          <skinFiles>
+            <basePath>Portals\_default\Skins\TailwindDNN</basePath>
+            <skinName>TailwindDNN</skinName>
+            <skinFile>
+              <path></path>
+              <name>default.ascx</name>
+            </skinFile>
+          </skinFiles>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>Portals\_default\Skins\TailwindDNN</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
