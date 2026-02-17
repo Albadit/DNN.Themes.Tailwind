@@ -2,7 +2,7 @@
 # TailwindDNN - DNN Skin Package Build Script
 # =============================================================================
 # Creates an installable DNN skin package (zip) with:
-#   - MyDnnSkin.dnn manifest at root
+#   - manifest.dnn manifest at root
 #   - Resources.zip containing all skin files (ascx, css, includes, etc.)
 # =============================================================================
 
@@ -104,8 +104,8 @@ New-Item -ItemType Directory -Path $packageTemp -Force | Out-Null
 
 try {
     # Copy manifest
-    Copy-Item ".\MyDnnSkin.dnn" -Destination $packageTemp
-    Write-Host "    + MyDnnSkin.dnn" -ForegroundColor DarkGray
+    Copy-Item ".\manifest.dnn" -Destination $packageTemp
+    Write-Host "    + manifest.dnn" -ForegroundColor DarkGray
 
     # Copy Resources.zip
     Copy-Item $resourcesZip -Destination $packageTemp
