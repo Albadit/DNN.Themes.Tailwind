@@ -1,0 +1,16 @@
+{
+  "name": "my-dnn-skin",
+  "version": "1.0.0",
+  "description": "DNN 10 Skin with Tailwind CSS 4.1",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./src/css/input.css -o ./dist/css/skin.css --watch",
+    "build": "npx @tailwindcss/cli -i ./src/css/input.css -o ./dist/css/skin.css --minify",
+    "package": "npm run build && gulp package"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/cli": "^4.1.0",
+    "gulp": "^4.0.2",
+    "gulp-zip": "^5.1.0"
+  }
+}

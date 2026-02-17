@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* DNN 10 Specific Overrides - Reset conflicting styles */
+@layer base {
+  /* Override DNN's aggressive reset that conflicts with Tailwind */
+  #dnn_ContentPane,
+  .DnnModule {
+    all: revert;
+  }
+  
+  /* Ensure Tailwind base styles take precedence */
+  html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom Theme Configuration */
+@theme {
+  --color-primary: #0ea5e9;
+  --color-secondary: #64748b;
+  --color-accent: #8b5cf6;
+  --font-display: "Inter", system-ui, sans-serif;
+}
+
+/* Custom Components */
+@layer components {
+  .dnn-pane {
+    @apply min-h-[50px] p-4;
+  }
+  
+  .dnn-module {
+    @apply mb-6;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+}
