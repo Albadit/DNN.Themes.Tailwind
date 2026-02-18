@@ -116,8 +116,7 @@ TailwindDNN/
 │
 ├── menus/                    ← DDRMenu templates (navigation rendering)
 │   ├── HeaderMenu/           ← Desktop navigation (dropdowns)
-│   ├── FooterMenu/           ← Footer navigation (flat links)
-│   └── MobileMenu/           ← Mobile navigation (placeholder)
+│   └── FooterMenu/           ← Footer navigation (flat links)
 │
 └── src/
     └── js/
@@ -221,7 +220,6 @@ Menus use DNN's **DDRMenu** system. Menu templates are text files with HTML and 
 | -------------- | --------------------------- | ------------------------------- |
 | **HeaderMenu** | `menus/HeaderMenu/`         | Desktop navigation with dropdown submenus |
 | **FooterMenu** | `menus/FooterMenu/`         | Simple flat footer links        |
-| **MobileMenu** | `menus/MobileMenu/`         | Mobile navigation (placeholder) |
 
 The menu templates use DDRMenu tokens like `[=TEXT]`, `[=URL]`, `[?NODE]`, `[*>NODE]`, etc. to render your DNN page tree as navigation.
 
