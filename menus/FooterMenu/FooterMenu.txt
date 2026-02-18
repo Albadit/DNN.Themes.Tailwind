@@ -1,0 +1,16 @@
+<ul class="flex flex-wrap items-center gap-x-6 gap-y-2">
+	[*>NODE]
+</ul>
+[>NODE]
+<li class="relative group">
+	[?ENABLED]
+	<a href="[=URL]" target="[=TARGET]" class="text-sm font-medium text-white/70 hover:text-white transition-colors [?SELECTED]text-white[/?]">
+		[=TEXT]
+	</a>
+	[?ELSE]
+	<span class="text-sm font-medium text-white/30 cursor-default">
+		[=TEXT]
+	</span>
+	[/?]
+</li>
+[/>]

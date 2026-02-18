@@ -21,7 +21,7 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex lg:items-center lg:gap-2" aria-label="Main Navigation">
-                    <dnn:MENU runat="server" id="dnnMENU" MenuStyle="menus/MainMenu" NodeSelector="*,0,2" />
+                    <dnn:MENU runat="server" id="dnnMENU" MenuStyle="menus/HeaderMenu" NodeSelector="*,0,2" />
                 </nav>
 
                 <!-- Mobile Menu Button -->

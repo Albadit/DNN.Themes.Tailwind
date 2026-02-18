@@ -1,0 +1,115 @@
+<style type="text/tailwindcss">
+/* ==========================================================================
+   DNN Pane & Module Components
+   Skin-level layout for DNN panes and module containers.
+   ========================================================================== */
+
+@layer components {
+  /* DNN Pane Styles */
+  .dnn-pane {
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+  }
+
+  .dnn-pane:empty {
+    display: none;
+  }
+
+  /* DNN Module Wrapper */
+  .dnn-module {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .dnn-module:last-child {
+    margin-bottom: 0;
+  }
+
+  /* DNN Module Title */
+  .dnn-module-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-gray-900);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-primary-500);
+  }
+
+  /* DNN Module Content */
+  .dnn-module-content {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-gray-700);
+  }
+}
+
+/* ==========================================================================
+   DNN Conflict Resolution / Reset Overrides
+   Reverts DNN's injected defaults so Tailwind utilities work correctly.
+   ========================================================================== */
+
+@layer base {
+  /* Revert DNN default styles inside skin panes */
+  .DNNContainer .dnn-pane *,
+  .DNNContainer .dnn-module * {
+    box-sizing: border-box;
+  }
+
+  /* Override DNN's aggressive anchor styles */
+  .tailwinddnn-skin a {
+    color: var(--color-primary-600);
+    text-decoration: none;
+  }
+
+  .tailwinddnn-skin a:hover {
+    color: var(--color-primary-700);
+    text-decoration: underline;
+  }
+
+  /* Ensure DNN edit bar doesn't interfere */
+  #dnn_ContentPane,
+  #dnn_LeftPane,
+  #dnn_RightPane,
+  #dnn_BottomPane,
+  #dnn_HeroPane,
+  #dnn_RegisterPane,
+  #dnn_FooterPane1,
+  #dnn_FooterPane2,
+  #dnn_FooterPane3,
+  #dnn_FooterPane4 {
+    min-height: 1px;
+  }
+}
+
+/* ==========================================================================
+   DNN Admin / Edit Mode Styles
+   ========================================================================== */
+
+@layer components {
+  /* Ensure panes are visible in edit mode */
+  .dnn-pane[class*="DNNEmptyPane"] {
+    display: block !important;
+    min-height: 4rem;
+    border: 2px dashed var(--color-gray-300);
+    background-color: var(--color-gray-50);
+    border-radius: var(--radius-card);
+    position: relative;
+  }
+
+  .dnn-pane[class*="DNNEmptyPane"]::after {
+    content: attr(id);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+</style>
