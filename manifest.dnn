@@ -63,10 +63,6 @@
               <path></path>
               <name>NoTitle.ascx</name>
             </containerFile>
-            <containerFile>
-              <path></path>
-              <name>Card.ascx</name>
-            </containerFile>
           </containerFiles>
         </component>
         <component type="ResourceFile">

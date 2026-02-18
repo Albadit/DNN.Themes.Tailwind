@@ -1,35 +1,32 @@
-<header class="sticky top-0 z-50 bg-white shadow-nav">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
-
-            <!-- Logo -->
-            <div class="flex shrink-0 items-center">
-                <dnn:LOGO runat="server" id="dnnLOGO" CssClass="h-8 w-auto" />
+<header class="sticky top-0 z-50">
+    <!-- Top Bar: User/Login -->
+    <div class="bg-slate-800 text-white">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-10 items-center justify-end gap-4 text-sm">
+                <dnn:LOGIN runat="server" id="dnnLogin" CssClass="text-white hover:text-cyan-300 transition-colors font-medium" />
+                <dnn:USER runat="server" id="dnnUser" CssClass="text-cyan-300 hover:text-white transition-colors" />
             </div>
+        </div>
+    </div>
 
-            <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex lg:items-center lg:gap-1" aria-label="Main Navigation">
-                <dnn:MENU runat="server" id="dnnMENU" MenuStyle="menus/MegaMenu" NodeSelector="*,0,2" />
-            </nav>
+    <!-- Main Header: Logo + Nav -->
+    <div class="bg-gradient-to-r from-slate-600 to-cyan-700">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
 
-            <!-- Right Side Actions -->
-            <div class="flex items-center gap-3">
-
-                <!-- Search -->
-                <div class="hidden sm:block">
-                    <dnn:SEARCH runat="server" id="dnnSearch" CssClass="relative" ShowSite="false" ShowWeb="false" />
+                <!-- Logo -->
+                <div class="flex shrink-0 items-center">
+                    <dnn:LOGO runat="server" id="dnnLOGO" CssClass="h-12 w-auto" />
                 </div>
 
-                <!-- User Controls -->
-                <div class="hidden items-center gap-2 text-sm md:flex">
-                    <dnn:USER runat="server" id="dnnUser" CssClass="text-gray-600 hover:text-primary-600 transition-colors" />
-                    <span class="text-gray-300">|</span>
-                    <dnn:LOGIN runat="server" id="dnnLogin" CssClass="text-gray-600 hover:text-primary-600 transition-colors font-medium" />
-                </div>
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex lg:items-center lg:gap-2" aria-label="Main Navigation">
+                    <dnn:MENU runat="server" id="dnnMENU" MenuStyle="menus/MainMenu" NodeSelector="*,0,2" />
+                </nav>
 
                 <!-- Mobile Menu Button -->
                 <button type="button"
-                        class="inline-flex items-center justify-center rounded-md p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 lg:hidden"
+                        class="inline-flex items-center justify-center rounded-md p-2 text-white/80 hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 lg:hidden"
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                         onclick="document.getElementById('mobile-menu').classList.toggle('hidden');">
@@ -42,14 +39,14 @@
     </div>
 
     <!-- Mobile Navigation Menu -->
-    <div id="mobile-menu" class="hidden border-t border-gray-100 lg:hidden">
+    <div id="mobile-menu" class="hidden bg-slate-700 lg:hidden">
         <div class="mx-auto max-w-7xl space-y-1 px-4 pb-4 pt-2">
-            <dnn:MENU runat="server" id="dnnMENU_Mobile" MenuStyle="menus/MegaMenu" NodeSelector="*,0,2" />
+            <dnn:MENU runat="server" id="dnnMENU_Mobile" MenuStyle="menus/MainMenu" NodeSelector="*,0,2" />
         </div>
-        <div class="border-t border-gray-100 px-4 py-3">
+        <div class="border-t border-white/10 px-4 py-3">
             <div class="flex items-center gap-3 text-sm">
-                <dnn:USER runat="server" id="dnnUser_Mobile" CssClass="text-gray-600" />
-                <dnn:LOGIN runat="server" id="dnnLogin_Mobile" CssClass="btn-primary text-xs" />
+                <dnn:USER runat="server" id="dnnUser_Mobile" CssClass="text-white/70" />
+                <dnn:LOGIN runat="server" id="dnnLogin_Mobile" CssClass="text-cyan-300 text-xs font-medium" />
             </div>
         </div>
     </div>

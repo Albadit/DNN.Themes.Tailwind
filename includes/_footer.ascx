@@ -1,44 +1,33 @@
 <footer class="footer-section">
-    <!-- Footer Panes: 4-Column Grid -->
-    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <!-- Accent Bar -->
+    <div class="h-1 bg-gradient-to-r from-slate-600 to-cyan-700"></div>
 
-            <!-- Footer Pane 1 -->
-            <div class="dnn-pane" id="FooterPane1" runat="server">
-            </div>
+    <!-- Footer Content -->
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
 
-            <!-- Footer Pane 2 -->
-            <div class="dnn-pane" id="FooterPane2" runat="server">
-            </div>
+            <!-- Left: Nav Links -->
+            <div>
+                <nav class="mb-6">
+                    <dnn:MENU runat="server" id="dnnMENU_Footer" MenuStyle="menus/MainMenu" NodeSelector="*,0,1" />
+                </nav>
 
-            <!-- Footer Pane 3 -->
-            <div class="dnn-pane" id="FooterPane3" runat="server">
-            </div>
-
-            <!-- Footer Pane 4 -->
-            <div class="dnn-pane" id="FooterPane4" runat="server">
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer Bottom Bar -->
-    <div class="border-t border-gray-700/50">
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+                <!-- Terms / Privacy -->
+                <div class="flex flex-wrap items-center gap-2 text-sm text-white/70">
+                    <dnn:TERMS runat="server" id="dnnTerms" CssClass="text-cyan-400 hover:text-white transition-colors" />
+                    <span class="text-white/30">|</span>
+                    <dnn:PRIVACY runat="server" id="dnnPrivacy" CssClass="text-cyan-400 hover:text-white transition-colors" />
+                </div>
 
                 <!-- Copyright -->
-                <div class="text-gray-400 text-sm">
+                <div class="mt-2 text-sm text-white/70">
                     <dnn:COPYRIGHT runat="server" id="dnnCopyright" CssClass="inline" />
                 </div>
+            </div>
 
-                <!-- Links & Controls -->
-                <div class="flex flex-wrap items-center justify-center gap-4 text-sm">
-                    <dnn:PRIVACY runat="server" id="dnnPrivacy" CssClass="text-gray-400 hover:text-white transition-colors" />
-                    <span class="text-gray-600">·</span>
-                    <dnn:TERMS runat="server" id="dnnTerms" CssClass="text-gray-400 hover:text-white transition-colors" />
-                    <span class="text-gray-600">·</span>
-                    <dnn:LANGUAGE runat="server" id="dnnLanguage" CssClass="text-gray-400 hover:text-white transition-colors" ShowLinks="True" ShowMenu="False" />
-                </div>
+            <!-- Right: Logo watermark -->
+            <div class="hidden lg:block">
+                <dnn:LOGO runat="server" id="dnnLOGO_Footer" CssClass="h-32 w-auto opacity-30" />
             </div>
         </div>
     </div>
