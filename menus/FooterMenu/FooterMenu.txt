@@ -1,14 +1,14 @@
-<ul class="flex flex-wrap items-center gap-x-6 gap-y-2">
+<ul class="footer-menu">
 	[*>NODE]
 </ul>
 [>NODE]
-<li class="relative group">
+<li>
 	[?ENABLED]
-	<a href="[=URL]" target="[=TARGET]" class="font-medium text-white/70 hover:text-white transition-colors [?SELECTED]text-white[/?]">
+	<a href="[=URL]" target="[=TARGET]" class="footer-menu-link [?SELECTED]selected[/?]">
 		[=TEXT]
 	</a>
 	[?ELSE]
-	<span class="font-medium text-white/30 cursor-default">
+	<span class="footer-menu-link-disabled">
 		[=TEXT]
 	</span>
 	[/?]

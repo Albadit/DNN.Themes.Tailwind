@@ -26,13 +26,13 @@
 
                 <!-- Mobile Menu Button -->
                 <button type="button"
-                        class="inline-flex items-center justify-center rounded-md p-2 text-white/80 hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 lg:hidden"
+                        class="hamburger lg:hidden"
                         aria-expanded="false"
                         aria-label="Toggle navigation"
-                        onclick="document.getElementById('mobile-menu').classList.toggle('hidden');">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
+                        onclick="this.classList.toggle('open'); document.getElementById('mobile-menu').classList.toggle('hidden');">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </div>
