@@ -10,7 +10,7 @@
     </div>
 
     <!-- Main Header: Logo + Nav -->
-    <div class="bg-gradient-to-r from-slate-600 to-cyan-700">
+    <div class="bg-slate-700">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-20 items-center justify-between">
 
@@ -40,7 +40,7 @@
 
     <!-- Mobile Navigation Menu -->
     <div id="mobile-menu" class="bg-slate-700 lg:hidden">
-        <div class="mx-auto max-w-7xl space-y-1 px-4 pb-4 pt-2">
+        <div class="flex p-4">
             <dnn:MENU runat="server" id="dnnMENU_Mobile" MenuStyle="menus/header" NodeSelector="*,0,2" />
         </div>
         <div class="border-t border-white/10 px-4 py-3">

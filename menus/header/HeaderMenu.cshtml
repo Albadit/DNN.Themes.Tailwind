@@ -2,7 +2,7 @@
 @using System.Dynamic;
 @inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<dynamic>
 
-<ul class="flex gap-2">
+<ul class="w-full flex gap-2">
     @RenderPages(Model.Source.root.Children)
 </ul>
 
@@ -19,7 +19,7 @@
         var attrTarget = !string.IsNullOrEmpty(page.Target) ? ("target=\"" + page.Target + "\"") : string.Empty;
         var attrHref = page.Enabled ? page.Url : "javascript:void(0);";
 
-        <li class="w-full group">
+        <li class="group">
             @if (page.Enabled)
             {
                 <a href="@attrHref" @attrTarget class="inline-flex items-center px-4 py-2 font-bold uppercase tracking-wide text-white rounded-md no-underline transition-colors duration-150 hover:bg-white/15 hover:no-underline hover:text-white @(page.Selected ? "bg-white/15" : "")">

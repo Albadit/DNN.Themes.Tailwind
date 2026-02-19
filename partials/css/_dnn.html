@@ -1,4 +1,4 @@
-<style>
+﻿<style>
 /* ==========================================================================
    DNN Pane & Module Components
    Skin-level layout for DNN panes and module containers.
@@ -12,13 +12,13 @@
 .dnnLoginService {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0.75rem;
   max-width: 24rem;
   margin: 2.5rem auto;
   padding: 2rem;
   background: white;
-  border: 1px solid var(--color-gray-200);
-  border-radius: var(--radius-card, 0.5rem);
+  border: 1px solid var(--default-200);
+  border-radius: var(--radius-card);
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
@@ -27,6 +27,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
+  margin: 0;
   overflow: hidden;
 }
 
@@ -36,17 +37,14 @@
   text-align: left !important;
   position: static !important;
   padding: 0;
+  margin: 0;
 }
 
 .dnnLoginService .dnnLabel .dnnFormLabel {
   display: block;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--color-gray-700);
-  margin: 0;
-  padding: 0;
-  width: auto;
-  text-align: left;
+  color: var(--default-700);
 }
 
 /* Remove DNN's default label tooltip/help icon */
@@ -66,10 +64,10 @@
   padding: 0.625rem 0.75rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: var(--color-gray-900);
+  color: var(--default-900);
   background-color: white;
-  border: 1px solid var(--color-gray-300);
-  border-radius: var(--radius-button, 0.375rem);
+  border: 1px solid var(--default-300);
+  border-radius: var(--radius-button);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
   outline: none;
 }
@@ -77,7 +75,7 @@
 .dnnLoginService input[type="text"]:focus,
 .dnnLoginService input[type="password"]:focus,
 .dnnLoginService input[type="email"]:focus {
-  border-color: var(--color-primary-500);
+  border-color: var(--primary-500);
   box-shadow: 0 0 0 3px rgb(59 130 246 / 0.15);
 }
 
@@ -87,47 +85,45 @@
   align-items: center;
   gap: 0.375rem;
   font-size: 0.8125rem;
-  color: var(--color-gray-600);
+  color: var(--default-600);
   cursor: pointer;
 }
 
-/* Hide DNN's fake checkbox image and show a real one */
-.dnnLoginService .dnnCheckbox {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1rem;
-  height: 1rem;
-  border: 1px solid var(--color-gray-300);
-  border-radius: 0.25rem;
-  background: white;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+/* Show native checkbox instead of DNN's jQuery replacement */
+.dnnLoginService input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  position: static !important;
+  z-index: auto !important;
+  opacity: 1 !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  margin: 0 !important;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid var(--default-300);
+  border-radius: var(--radius-button);
   flex-shrink: 0;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
-.dnnLoginService .dnnCheckbox .mark img {
-  display: none;
+.dnnLoginService input[type="checkbox"]:checked {
+  background-color: var(--primary-600);
+  border-color: var(--primary-600);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.dnnLoginService input[type="checkbox"]:checked + .dnnCheckbox {
-  background-color: var(--color-primary-600);
-  border-color: var(--color-primary-600);
-}
-
-.dnnLoginService input[type="checkbox"]:checked + .dnnCheckbox .mark::after {
-  content: "";
-  display: block;
-  width: 0.375rem;
-  height: 0.625rem;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-  margin-top: -2px;
+/* Hide DNN's fake checkbox wrapper */
+.dnnLoginService .dnnCheckbox {
+  display: none !important;
 }
 
 .dnnLoginService .dnnBoxLabel {
   font-size: 0.8125rem;
-  color: var(--color-gray-600);
+  color: var(--default-600);
   cursor: pointer;
 }
 
@@ -140,9 +136,9 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: white;
-  background-color: var(--color-primary-600);
+  background-color: var(--primary-600);
   border: none;
-  border-radius: var(--radius-button, 0.375rem);
+  border-radius: var(--radius-button);
   cursor: pointer;
   transition: background-color 0.15s ease, box-shadow 0.15s ease;
   text-decoration: none;
@@ -150,24 +146,23 @@
 }
 
 .dnnLoginService .dnnPrimaryAction:hover {
-  background-color: var(--color-primary-700);
+  background-color: var(--primary-700);
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   color: white;
   text-decoration: none;
 }
 
-/* ---- Secondary Action (Cancel, Reset Password) ---- */
+/* ---- Secondary Action ---- */
 .dnnLoginService .dnnSecondaryAction {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.625rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-gray-600);
+  color: var(--default-600);
   background-color: transparent;
-  border: 1px solid var(--color-gray-300);
-  border-radius: var(--radius-button, 0.375rem);
+  border: 1px solid var(--default-300);
+  border-radius: var(--radius-button);
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   text-decoration: none;
@@ -175,13 +170,17 @@
 }
 
 .dnnLoginService .dnnSecondaryAction:hover {
-  background-color: var(--color-gray-50);
-  border-color: var(--color-gray-400);
-  color: var(--color-gray-700);
+  background-color: var(--default-50);
+  border-color: var(--default-400);
+  color: var(--default-700);
   text-decoration: none;
 }
 
 /* ---- Login Actions (Reset Password link row) ---- */
+.dnnLoginService .dnnLoginActions {
+  margin: 0;
+}
+
 .dnnLoginService .dnnLoginActions .dnnActions {
   list-style: none;
   padding: 0;
@@ -199,21 +198,20 @@
   padding: 0.375rem 0.75rem;
   border: none;
   background: none;
-  color: var(--color-primary-600);
-  font-weight: 500;
-  margin-left: 0;
+  color: var(--primary-600);
+  cursor: pointer;
   text-decoration: none;
 }
 
 .dnnLoginService .dnnLoginActions .dnnSecondaryAction:hover {
-  color: var(--color-primary-700);
-  background: none;
+  color: var(--primary-700);
   text-decoration: underline;
 }
 
-/* ---- Hide empty label spacers ---- */
+/* Hide empty/spacer labels */
 .dnnLoginService .dnnFormItem > .dnnFormLabel:empty,
-.dnnLoginService .dnnFormItem > span.dnnFormLabel:empty {
+.dnnLoginService .dnnFormItem > span.dnnFormLabel:empty,
+.dnnLoginService .dnnFormItem > span.dnnFormLabel:has(+ .dnnLoginActions) {
   display: none;
 }
 
@@ -225,7 +223,7 @@
   color: #991b1b;
   background-color: #fef2f2;
   border: 1px solid #fecaca;
-  border-radius: var(--radius-button, 0.375rem);
+  border-radius: var(--radius-button);
 }
 
 .dnnLoginService .dnnFormMessage.dnnFormError {
@@ -241,7 +239,7 @@
   color: #166534;
   background-color: #f0fdf4;
   border: 1px solid #bbf7d0;
-  border-radius: var(--radius-button, 0.375rem);
+  border-radius: var(--radius-button);
 }
 
 /* ==========================================================================
@@ -257,8 +255,8 @@
   margin: 2.5rem auto;
   padding: 2rem;
   background: white;
-  border: 1px solid var(--color-gray-200);
-  border-radius: var(--radius-card, 0.5rem);
+  border: 1px solid var(--default-200);
+  border-radius: var(--radius-card);
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
@@ -272,10 +270,10 @@
   margin-bottom: 1.25rem;
   font-size: 0.8125rem;
   line-height: 1.5;
-  color: var(--color-gray-600);
-  background-color: var(--color-primary-50, #eff6ff);
-  border: 1px solid var(--color-primary-200, #bfdbfe);
-  border-radius: var(--radius-button, 0.375rem);
+  color: var(--default-600);
+  background-color: var(--primary-50);
+  border: 1px solid var(--primary-200);
+  border-radius: var(--radius-button);
 }
 
 /* ---- Form Items ---- */
@@ -306,7 +304,7 @@
   display: block;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--color-gray-700);
+  color: var(--default-700);
   text-align: left;
 }
 
@@ -326,17 +324,17 @@
   padding: 0.625rem 0.75rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: var(--color-gray-900);
+  color: var(--default-900);
   background-color: white;
-  border: 1px solid var(--color-gray-300);
-  border-radius: var(--radius-button, 0.375rem);
+  border: 1px solid var(--default-300);
+  border-radius: var(--radius-button);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
   outline: none;
 }
 
 .dnnSendPassword input[type="text"]:focus,
 .dnnSendPassword input[type="email"]:focus {
-  border-color: var(--color-primary-500);
+  border-color: var(--primary-500);
   box-shadow: 0 0 0 3px rgb(59 130 246 / 0.15);
 }
 
@@ -368,16 +366,16 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: white;
-  background-color: var(--color-primary-600);
+  background-color: var(--primary-600);
   border: none;
-  border-radius: var(--radius-button, 0.375rem);
+  border-radius: var(--radius-button);
   cursor: pointer;
   transition: background-color 0.15s ease, box-shadow 0.15s ease;
   text-decoration: none;
 }
 
 .dnnSendPassword .dnnPrimaryAction:hover {
-  background-color: var(--color-primary-700);
+  background-color: var(--primary-700);
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   color: white;
   text-decoration: none;
@@ -390,19 +388,19 @@
   padding: 0.625rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-gray-600);
+  color: var(--default-600);
   background-color: transparent;
-  border: 1px solid var(--color-gray-300);
-  border-radius: var(--radius-button, 0.375rem);
+  border: 1px solid var(--default-300);
+  border-radius: var(--radius-button);
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   text-decoration: none;
 }
 
 .dnnSendPassword .dnnSecondaryAction:hover {
-  background-color: var(--color-gray-50);
-  border-color: var(--color-gray-400);
-  color: var(--color-gray-700);
+  background-color: var(--default-50);
+  border-color: var(--default-400);
+  color: var(--default-700);
   text-decoration: none;
 }
 
@@ -414,7 +412,7 @@
   color: #991b1b;
   background-color: #fef2f2;
   border: 1px solid #fecaca;
-  border-radius: var(--radius-button, 0.375rem);
+  border-radius: var(--radius-button);
 }
 
 .dnnSendPassword .dnnFormMessage.dnnFormError {
@@ -430,6 +428,6 @@
   color: #166534;
   background-color: #f0fdf4;
   border: 1px solid #bbf7d0;
-  border-radius: var(--radius-button, 0.375rem);
+  border-radius: var(--radius-button);
 }
 </style>
