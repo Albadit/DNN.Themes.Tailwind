@@ -61,7 +61,7 @@
             </containerFile>
             <containerFile>
               <path></path>
-              <name>NoTitle.ascx</name>
+              <name>None.ascx</name>
             </containerFile>
           </containerFiles>
         </component>

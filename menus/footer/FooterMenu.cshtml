@@ -1,0 +1,36 @@
+@using DotNetNuke.Web.DDRMenu;
+@using System.Dynamic;
+@inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<dynamic>
+
+<ul class="flex flex-wrap gap-x-6 gap-y-2">
+    @RenderPages(Model.Source.root.Children)
+</ul>
+
+@helper RenderPages(IEnumerable<MenuNode> pages)
+{
+    if (!pages.Any())
+    {
+        return;
+    }
+
+    foreach (var page in pages)
+    {
+        var attrTarget = !string.IsNullOrEmpty(page.Target) ? ("target=\"" + page.Target + "\"") : string.Empty;
+        var attrHref = page.Enabled ? page.Url : "javascript:void(0);";
+
+        <li>
+            @if (page.Enabled)
+            {
+                <a href="@attrHref" @attrTarget class="font-medium text-white/70 no-underline transition-colors duration-150 hover:text-white hover:no-underline @(page.Selected ? "!text-white" : "")">
+                    @page.Text
+                </a>
+            }
+            else
+            {
+                <span class="font-medium text-white/30 cursor-default">
+                    @page.Text
+                </span>
+            }
+        </li>
+    }
+}

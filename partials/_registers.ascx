@@ -3,10 +3,6 @@
 <%@ Register TagPrefix="dnn" TagName="CONTROLPANEL" Src="~/Admin/Skins/ControlPanel.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="COPYRIGHT" Src="~/Admin/Skins/Copyright.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="CURRENTDATE" Src="~/Admin/Skins/CurrentDate.ascx" %>
-<%@ Register TagPrefix="dnn" TagName="DnnCssExclude" Src="~/Admin/Skins/DnnCssExclude.ascx" %>
-<%@ Register TagPrefix="dnn" TagName="DnnCssInclude" Src="~/Admin/Skins/DnnCssInclude.ascx" %>
-<%@ Register TagPrefix="dnn" TagName="DnnJsExclude" Src="~/Admin/Skins/DnnJsExclude.ascx" %>
-<%@ Register TagPrefix="dnn" TagName="DnnJsInclude" Src="~/Admin/Skins/DnnJsInclude.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="DnnLink" Src="~/Admin/Skins/DnnLink.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="DOTNETNUKE" Src="~/Admin/Skins/DotNetNuke.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="Help" Src="~/Admin/Skins/Help.ascx" %>

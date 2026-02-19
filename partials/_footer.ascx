@@ -9,7 +9,7 @@
             <!-- Left: Nav Links -->
             <div>
                 <nav class="mb-6">
-                    <dnn:MENU runat="server" id="dnnMENU_Footer" MenuStyle="menus/FooterMenu" NodeSelector="*,0,1" />
+                    <dnn:MENU runat="server" id="dnnMENU_Footer" MenuStyle="menus/footer" NodeSelector="*,0,1" />
                 </nav>
 
                 <!-- Terms / Privacy -->

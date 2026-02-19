@@ -1,6 +1,6 @@
 <header class="sticky top-0 z-50">
     <!-- Top Bar: User/Login -->
-    <div class="bg-slate-800 text-white">
+    <div class="hidden lg:block bg-slate-800 text-white">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-10 items-center justify-end gap-4 text-sm">
                 <dnn:LOGIN runat="server" id="dnnLogin" CssClass="text-white hover:text-cyan-300 transition-colors font-medium" />
@@ -21,7 +21,7 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex lg:items-center lg:gap-2" aria-label="Main Navigation">
-                    <dnn:MENU runat="server" id="dnnMENU" MenuStyle="menus/HeaderMenu" NodeSelector="*,0,2" />
+                    <dnn:MENU runat="server" id="dnnMENU" MenuStyle="menus/header" NodeSelector="*,0,2" />
                 </nav>
 
                 <!-- Mobile Menu Button -->
@@ -29,7 +29,7 @@
                         class="hamburger lg:hidden"
                         aria-expanded="false"
                         aria-label="Toggle navigation"
-                        onclick="this.classList.toggle('open'); document.getElementById('mobile-menu').classList.toggle('hidden');">
+                        onclick="this.classList.toggle('open'); var m=document.getElementById('mobile-menu'); m.classList.toggle('open'); this.setAttribute('aria-expanded', m.classList.contains('open'));">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -39,9 +39,9 @@
     </div>
 
     <!-- Mobile Navigation Menu -->
-    <div id="mobile-menu" class="hidden bg-slate-700 lg:hidden">
+    <div id="mobile-menu" class="bg-slate-700 lg:hidden">
         <div class="mx-auto max-w-7xl space-y-1 px-4 pb-4 pt-2">
-            <dnn:MENU runat="server" id="dnnMENU_Mobile" MenuStyle="menus/MainMenu" NodeSelector="*,0,2" />
+            <dnn:MENU runat="server" id="dnnMENU_Mobile" MenuStyle="menus/header" NodeSelector="*,0,2" />
         </div>
         <div class="border-t border-white/10 px-4 py-3">
             <div class="flex items-center gap-3 text-sm">
@@ -51,3 +51,17 @@
         </div>
     </div>
 </header>
+
+<script>
+(function(){
+    var mql = window.matchMedia('(min-width: 1024px)');
+    function closeMobile(){
+        if(!mql.matches) return;
+        var btn = document.querySelector('.hamburger');
+        var menu = document.getElementById('mobile-menu');
+        if(btn) { btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+        if(menu) menu.classList.remove('open');
+    }
+    mql.addEventListener('change', closeMobile);
+})();
+</script>

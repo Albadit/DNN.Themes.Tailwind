@@ -49,21 +49,19 @@ try {
         Write-Host "    + $($_.Name)" -ForegroundColor DarkGray
     }
 
-    # Copy includes folder
-    if (Test-Path ".\includes") {
-        $includesDir = Join-Path $tempDir "includes"
-        Copy-Item ".\includes" -Destination $includesDir -Recurse
-        Write-Host "    + includes\" -ForegroundColor DarkGray
+
+    # Copy partials folder
+    if (Test-Path ".\partials") {
+        $partialsDir = Join-Path $tempDir "partials"
+        Copy-Item ".\partials" -Destination $partialsDir -Recurse
+        Write-Host "    + partials\" -ForegroundColor DarkGray
     }
 
-    # Copy JS files
-    if (Test-Path ".\src\js") {
-        $jsDir = Join-Path $tempDir "src\js"
-        New-Item -ItemType Directory -Path $jsDir -Force | Out-Null
-        Get-ChildItem -Path ".\src\js" -File | ForEach-Object {
-            Copy-Item $_.FullName -Destination $jsDir
-            Write-Host "    + src\js\$($_.Name)" -ForegroundColor DarkGray
-        }
+    # Copy src folder (js, font, css, etc.)
+    if (Test-Path ".\src") {
+        $srcDir = Join-Path $tempDir "src"
+        Copy-Item ".\src" -Destination $srcDir -Recurse
+        Write-Host "    + src\" -ForegroundColor DarkGray
     }
 
     # Copy skin.doctype.xml
@@ -72,8 +70,8 @@ try {
         Write-Host "    + skin.doctype.xml" -ForegroundColor DarkGray
     }
 
-    # Copy any additional asset folders (images, fonts, js, etc.)
-    @("images", "fonts", "js", "assets", "menus") | ForEach-Object {
+    # Copy any additional asset folders (images, fonts, css, js, etc.)
+    @("images", "fonts", "css", "js", "assets", "menus") | ForEach-Object {
         if (Test-Path ".\$_") {
             Copy-Item ".\$_" -Destination (Join-Path $tempDir $_) -Recurse
             Write-Host "    + $_\" -ForegroundColor DarkGray

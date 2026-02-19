@@ -1,0 +1,435 @@
+<style>
+/* ==========================================================================
+   DNN Pane & Module Components
+   Skin-level layout for DNN panes and module containers.
+   ========================================================================== */
+
+/* ==========================================================================
+   DNN Login
+   ========================================================================== */
+
+/* ---- Login Form Container ---- */
+.dnnLoginService {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 24rem;
+  margin: 2.5rem auto;
+  padding: 2rem;
+  background: white;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-card, 0.5rem);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* ---- Form Rows ---- */
+.dnnLoginService .dnnFormItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  overflow: hidden;
+}
+
+.dnnLoginService .dnnLabel {
+  float: none !important;
+  width: auto !important;
+  text-align: left !important;
+  position: static !important;
+  padding: 0;
+}
+
+.dnnLoginService .dnnLabel .dnnFormLabel {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  margin: 0;
+  padding: 0;
+  width: auto;
+  text-align: left;
+}
+
+/* Remove DNN's default label tooltip/help icon */
+.dnnLoginService .dnnLabel .dnnTooltip,
+.dnnLoginService .dnnLabel a.dnnFormHelp {
+  display: none;
+}
+
+/* ---- Text & Password Inputs ---- */
+.dnnLoginService input[type="text"],
+.dnnLoginService input[type="password"],
+.dnnLoginService input[type="email"] {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-gray-900);
+  background-color: white;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-button, 0.375rem);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.dnnLoginService input[type="text"]:focus,
+.dnnLoginService input[type="password"]:focus,
+.dnnLoginService input[type="email"]:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.15);
+}
+
+/* ---- Remember Me ---- */
+.dnnLoginService .dnnLoginRememberMe {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--color-gray-600);
+  cursor: pointer;
+}
+
+/* Hide DNN's fake checkbox image and show a real one */
+.dnnLoginService .dnnCheckbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 0.25rem;
+  background: white;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.dnnLoginService .dnnCheckbox .mark img {
+  display: none;
+}
+
+.dnnLoginService input[type="checkbox"]:checked + .dnnCheckbox {
+  background-color: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+}
+
+.dnnLoginService input[type="checkbox"]:checked + .dnnCheckbox .mark::after {
+  content: "";
+  display: block;
+  width: 0.375rem;
+  height: 0.625rem;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-top: -2px;
+}
+
+.dnnLoginService .dnnBoxLabel {
+  font-size: 0.8125rem;
+  color: var(--color-gray-600);
+  cursor: pointer;
+}
+
+/* ---- Primary Action (Login Button) ---- */
+.dnnLoginService .dnnPrimaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  background-color: var(--color-primary-600);
+  border: none;
+  border-radius: var(--radius-button, 0.375rem);
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.dnnLoginService .dnnPrimaryAction:hover {
+  background-color: var(--color-primary-700);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  color: white;
+  text-decoration: none;
+}
+
+/* ---- Secondary Action (Cancel, Reset Password) ---- */
+.dnnLoginService .dnnSecondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-gray-600);
+  background-color: transparent;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-button, 0.375rem);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.dnnLoginService .dnnSecondaryAction:hover {
+  background-color: var(--color-gray-50);
+  border-color: var(--color-gray-400);
+  color: var(--color-gray-700);
+  text-decoration: none;
+}
+
+/* ---- Login Actions (Reset Password link row) ---- */
+.dnnLoginService .dnnLoginActions .dnnActions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dnnLoginService .dnnLoginActions .dnnActions li {
+  list-style: none;
+}
+
+.dnnLoginService .dnnLoginActions .dnnSecondaryAction {
+  font-size: 0.8125rem;
+  padding: 0.375rem 0.75rem;
+  border: none;
+  background: none;
+  color: var(--color-primary-600);
+  font-weight: 500;
+  margin-left: 0;
+  text-decoration: none;
+}
+
+.dnnLoginService .dnnLoginActions .dnnSecondaryAction:hover {
+  color: var(--color-primary-700);
+  background: none;
+  text-decoration: underline;
+}
+
+/* ---- Hide empty label spacers ---- */
+.dnnLoginService .dnnFormItem > .dnnFormLabel:empty,
+.dnnLoginService .dnnFormItem > span.dnnFormLabel:empty {
+  display: none;
+}
+
+/* ---- Validation / Error Messages ---- */
+.dnnLoginService .dnnFormValidationSummary {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.8125rem;
+  color: #991b1b;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-button, 0.375rem);
+}
+
+.dnnLoginService .dnnFormMessage.dnnFormError {
+  color: #991b1b;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.dnnLoginService .dnnFormMessage.dnnFormSuccess {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.8125rem;
+  color: #166534;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius-button, 0.375rem);
+}
+
+/* ==========================================================================
+   DNN Send Password / Reset Password
+   ========================================================================== */
+
+/* ---- Container ---- */
+.dnnSendPassword {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 24rem;
+  margin: 2.5rem auto;
+  padding: 2rem;
+  background: white;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-card, 0.5rem);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.dnnSendPasswordContent {
+  width: 100% !important;
+}
+
+/* ---- Info Message ---- */
+.dnnSendPassword .dnnFormMessage.dnnFormInfo {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-gray-600);
+  background-color: var(--color-primary-50, #eff6ff);
+  border: 1px solid var(--color-primary-200, #bfdbfe);
+  border-radius: var(--radius-button, 0.375rem);
+}
+
+/* ---- Form Items ---- */
+.dnnSendPassword .dnnFormItem {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+/* ---- Labels ---- */
+.dnnSendPassword .dnnLabel {
+  display: block;
+  float: none !important;
+  width: auto !important;
+  text-align: left !important;
+  position: static !important;
+  margin-bottom: 0.375rem;
+  padding: 0;
+}
+
+.dnnSendPassword .dnnLabel label {
+  display: block;
+  text-align: left;
+}
+
+.dnnSendPassword .dnnLabel label span {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  text-align: left;
+}
+
+/* Hide DNN tooltip/help icon */
+.dnnSendPassword .dnnLabel .dnnTooltip,
+.dnnSendPassword .dnnLabel a.dnnFormHelp {
+  display: none;
+}
+
+/* ---- Input ---- */
+.dnnSendPassword input[type="text"],
+.dnnSendPassword input[type="email"] {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-gray-900);
+  background-color: white;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-button, 0.375rem);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.dnnSendPassword input[type="text"]:focus,
+.dnnSendPassword input[type="email"]:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.15);
+}
+
+/* ---- Action Buttons ---- */
+.dnnSendPassword .dnnActions {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  gap: 0.5rem;
+}
+
+.dnnSendPassword .dnnActions li {
+  width: 100%;
+  list-style: none;
+}
+
+.dnnSendPassword .dnnActions li a {
+  width: 100%;
+}
+
+.dnnSendPassword .dnnPrimaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  background-color: var(--color-primary-600);
+  border: none;
+  border-radius: var(--radius-button, 0.375rem);
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+}
+
+.dnnSendPassword .dnnPrimaryAction:hover {
+  background-color: var(--color-primary-700);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  color: white;
+  text-decoration: none;
+}
+
+.dnnSendPassword .dnnSecondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-gray-600);
+  background-color: transparent;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-button, 0.375rem);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+}
+
+.dnnSendPassword .dnnSecondaryAction:hover {
+  background-color: var(--color-gray-50);
+  border-color: var(--color-gray-400);
+  color: var(--color-gray-700);
+  text-decoration: none;
+}
+
+/* ---- Validation Messages ---- */
+.dnnSendPassword .dnnFormValidationSummary {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.8125rem;
+  color: #991b1b;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-button, 0.375rem);
+}
+
+.dnnSendPassword .dnnFormMessage.dnnFormError {
+  color: #991b1b;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.dnnSendPassword .dnnFormMessage.dnnFormSuccess {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.8125rem;
+  color: #166534;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius-button, 0.375rem);
+}
+</style>
