@@ -68,22 +68,25 @@
   }
 }
 
-/* Mobile menu: smooth slide transition */
+/* Mobile menu: slide + fade transition */
 #mobile-menu {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s ease, opacity 0.3s ease;
   opacity: 0;
   overflow: hidden;
+  transition: grid-template-rows 0.35s ease, opacity 0.3s ease;
+  visibility: hidden;
 }
 
 #mobile-menu > * {
   overflow: hidden;
+  min-height: 0;
 }
 
 #mobile-menu.open {
   grid-template-rows: 1fr;
   opacity: 1;
+  visibility: visible;
 }
 
 /* Mobile menu: stack items vertically */
@@ -144,18 +147,5 @@
   --tw-ring-shadow: none;
   --tw-shadow: none;
   box-shadow: none;
-}
-
-/* ==========================================================================
-   Footer Overrides
-   ========================================================================== */
-
-/* Hide dropdown arrows and sub-menus in footer */
-.footer-section nav ul li > a > svg {
-  display: none;
-}
-
-.footer-section nav .group > div {
-  display: none;
 }
 </style>

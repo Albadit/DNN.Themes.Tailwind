@@ -598,4 +598,165 @@
 .dnnRazorHostEditScript > .dnnActions li {
   list-style: none;
 }
+
+/* ==========================================================================
+   DNN Module Drag & Drop
+   Styling for the edit-mode drag hints, floating modules, drop targets,
+   and empty-pane outlines.
+   ========================================================================== */
+
+/* ---- Floating Module (being dragged) ---- */
+.DnnModule.floating.drift {
+  z-index: 9999;
+  opacity: 0.95;
+  pointer-events: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* ---- Drag Hint Card ---- */
+.dnnDragHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 1.25rem 1.5rem;
+  background: white;
+  border: 1px solid var(--default-200);
+  border-radius: 1rem;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  cursor: grab;
+  outline: none !important;
+  height: auto !important;
+  min-height: 0;
+  user-select: none;
+}
+
+.dnnDragHint:active {
+  cursor: grabbing;
+}
+
+.dnnDragHint > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  position: relative;
+}
+
+/* ---- Module Icon ---- */
+.dnnDragHint .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  border: none;
+  overflow: hidden;
+}
+
+.dnnDragHint .icon img {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  opacity: 0.6;
+}
+
+/* ---- Module Title ---- */
+.dnnDragHint .title {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--default-700);
+  text-align: center;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+/* ---- Cancel / Close Button ---- */
+.dnnDragHint .cancel-module {
+  position: absolute;
+  top: -0.375rem;
+  right: -0.375rem;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: none !important;
+  background-image: none !important;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 1;
+  padding: 0;
+  font-size: 0;
+  line-height: 1;
+}
+
+/* Override any DNN background-image on the anchor */
+.dnnDragHint .cancel-module,
+.dnnDragHint .cancel-module:hover,
+.dnnDragHint .cancel-module:focus {
+  background: none !important;
+  background-image: none !important;
+}
+
+.dnnDragHint .cancel-module::after {
+  content: "\00d7";
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--default-400);
+  transition: color 0.15s ease;
+}
+
+.dnnDragHint .cancel-module:hover::after {
+  color: var(--default-700);
+}
+
+/* ---- Drop Target Zone ---- */
+.dnnDropTarget {
+  display: block;
+  visibility: visible !important;
+  height: 110px !important;
+  width: 100%;
+  border: 2px dashed var(--primary-400) !important;
+  background: var(--primary-50) !important;
+  border-radius: var(--radius-card);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.dnnDropTarget > p {
+  color: var(--primary-600) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 45px;
+}
+
+/* ---- Sortable Panes ---- */
+.dnnSortable.ui-sortable,
+.dnnSortable.ui-droppable {
+  padding: 0;
+}
+
+.dnnSortable {
+  min-height: 110px !important;
+}
+
+/* ---- Empty Pane Outlines (edit mode) ---- */
+.dnnDropEmptyPanes {
+  outline: 2px dashed var(--default-300) !important;
+  outline-offset: -1px;
+  min-width: 110px !important;
+  border-radius: var(--radius-card);
+}
 </style>

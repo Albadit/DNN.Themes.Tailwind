@@ -39,11 +39,11 @@
     </div>
 
     <!-- Mobile Navigation Menu -->
-    <div id="mobile-menu" class="bg-slate-700 lg:hidden">
-        <div class="flex p-4">
+    <div id="mobile-menu" class="lg:hidden bg-slate-700">
+        <div class="flex lg:hidden p-4">
             <dnn:MENU runat="server" id="dnnMENU_Mobile" MenuStyle="menus/header" NodeSelector="*,0,2" />
         </div>
-        <div class="border-t border-white/10 px-4 py-3">
+        <div class="lg:hidden border-t border-white/10 px-4 py-3">
             <div class="flex items-center gap-3 text-sm">
                 <dnn:USER runat="server" id="dnnUser_Mobile" CssClass="text-white/70" />
                 <dnn:LOGIN runat="server" id="dnnLogin_Mobile" CssClass="text-cyan-300 text-xs font-medium" />
