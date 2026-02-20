@@ -430,4 +430,172 @@
   border: 1px solid #bbf7d0;
   border-radius: var(--radius-button);
 }
+
+/* ==========================================================================
+   DNN Razor Host Edit Script
+   ========================================================================== */
+
+/* ---- Container ---- */
+.dnnRazorHostEditScript {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dnnRazorHostEditScript fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Form Rows ---- */
+.dnnRazorHostEditScript .dnnFormItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin: 0;
+}
+
+/* ---- Labels ---- */
+.dnnRazorHostEditScript .dnnLabel {
+  float: none !important;
+  width: auto !important;
+  text-align: left !important;
+  position: static !important;
+  padding: 0;
+  margin: 0;
+}
+
+.dnnRazorHostEditScript .dnnLabel label span {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--default-700);
+}
+
+/* ---- Select ---- */
+.dnnRazorHostEditScript select {
+  display: block;
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--default-900);
+  background-color: white;
+  border: 1px solid var(--default-300);
+  border-radius: var(--radius-button);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.dnnRazorHostEditScript select:focus {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.15);
+}
+
+/* ---- Source File Info ---- */
+.dnnRazorHostEditScript .razorHostModSource {
+  font-size: 0.75rem;
+  color: var(--default-500);
+  padding: 0.375rem 0.75rem;
+  background-color: var(--default-50);
+  border-radius: var(--radius-button);
+}
+
+/* ---- Textarea ---- */
+.dnnRazorHostEditScript textarea {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 0.75rem;
+  font-size: 0.8125rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  line-height: 1.6;
+  color: var(--default-900);
+  background-color: white;
+  border: 1px solid var(--default-300);
+  border-radius: var(--radius-button);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+  resize: vertical;
+}
+
+.dnnRazorHostEditScript textarea:focus {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.15);
+}
+
+/* ---- Checkbox ---- */
+.dnnRazorHostEditScript input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  position: static !important;
+  z-index: auto !important;
+  opacity: 1 !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  margin: 0 !important;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid var(--default-300);
+  border-radius: var(--radius-button);
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.dnnRazorHostEditScript input[type="checkbox"]:checked {
+  background-color: var(--primary-600);
+  border-color: var(--primary-600);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dnnRazorHostEditScript .dnnCheckbox {
+  display: none !important;
+}
+
+/* ---- Inline Select + Button Row ---- */
+.dnnRazorHostEditScript .dnnFormItem:has(select) {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dnnRazorHostEditScript .dnnFormItem:has(select) select {
+  flex: 1;
+  min-width: 0;
+}
+
+.dnnRazorHostEditScript .dnnFormItem:has(select) .dnnSecondaryAction {
+  white-space: nowrap;
+}
+
+/* ---- Checkbox + Label Row ---- */
+.dnnRazorHostEditScript .dnnFormItem:has(input[type="checkbox"]) {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ---- Action Buttons ---- */
+.dnnRazorHostEditScript > .dnnActions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-top: 1px solid var(--default-200);
+  padding-top: 1rem;
+}
+
+.dnnRazorHostEditScript > .dnnActions li {
+  list-style: none;
+}
 </style>

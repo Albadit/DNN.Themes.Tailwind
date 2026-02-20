@@ -6,9 +6,9 @@
 
 <!-- Main Content -->
 <main>
-	<div id="BannerPane" class="flex w-full prose max-w-none" runat="server"></div>
-    <div id="ContentPane" class="flex w-full prose max-w-none" runat="server"></div> 
-    <div id="FluidPane" class="flex w-full prose max-w-none" runat="server"></div>
+	<div id="BannerPane" class="flex w-full prose max-w-none justify-center" runat="server"></div>
+    <div id="ContentPane" class="flex w-full prose max-w-none justify-center" runat="server"></div> 
+    <div id="FluidPane" class="flex w-full prose max-w-none justify-center" runat="server"></div>
 </main>
 
 <!-- Footer -->
