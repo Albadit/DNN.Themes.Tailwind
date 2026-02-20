@@ -112,7 +112,7 @@ TailwindDNN/
 │       ├── _theme.html       ← Color palettes, fonts, design tokens
 │       ├── _global.html      ← Hamburger button, mobile menu, base styles
 │       ├── _dnn.html         ← DNN login, form, and module styles
-│       └── _UI.html          ← DNN UI component styles (placeholder)
+│       └── _UI.html          ← Your custom Tailwind UI component library
 │
 ├── menus/                    ← DDRMenu Razor templates (navigation rendering)
 │   ├── header/               ← Desktop navigation (dropdowns)
@@ -212,8 +212,8 @@ Tailwind CSS styles live in `partials/css/` as `<style type="text/tailwindcss">`
 | -------------------- | -------------------------------------------------------------------- |
 | `partials/css/_theme.html`  | Defines your **color palettes** (primary, secondary, success, warning, danger, default), **fonts**, shadows, border radius, and layout tokens. Includes light and dark mode variables. **Edit this file to change your site's colors and fonts.** |
 | `partials/css/_global.html` | Defines **base styles** (body font, smooth scrolling), the hamburger button animation, and mobile menu toggle/layout styles. |
-| `partials/css/_dnn.html`    | Styles for DNN login forms, input fields, buttons, remember-me checkbox, and other DNN-specific form components. Uses plain `<style>` (not Tailwind). |
-| `partials/css/_UI.html`     | Placeholder for additional DNN UI component styles (currently empty). |
+| `partials/css/_dnn.html`    | Because the skin disables DNN's default CSS (`DnnCssExclude`), this file **re-styles the built-in DNN modules** (login forms, inputs, buttons, checkboxes, etc.) so they look correct with the new design. Uses plain `<style>` (not Tailwind). |
+| `partials/css/_UI.html`     | Your custom **Tailwind UI component library**. Add reusable `@layer components` classes here (e.g., `.btn-primary`, `.card`, `.hero-section`) to build a design system that you can use across the skin and DNN modules (currently empty). |
 | `src/css/default.css`       | DNN default skin stylesheet — typography reset, headings, links, lists, forms, tables, utility classes, and DNN module/pane overrides. |
 
 ### Menus
