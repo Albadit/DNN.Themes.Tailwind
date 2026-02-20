@@ -68,25 +68,14 @@
   }
 }
 
-/* Mobile menu: slide + fade transition */
+/* Mobile menu: toggle visibility (no animation) */
 #mobile-menu {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
+  display: none;
   overflow: hidden;
-  transition: grid-template-rows 0.35s ease, opacity 0.3s ease;
-  visibility: hidden;
-}
-
-#mobile-menu > * {
-  overflow: hidden;
-  min-height: 0;
 }
 
 #mobile-menu.open {
-  grid-template-rows: 1fr;
-  opacity: 1;
-  visibility: visible;
+  display: block;
 }
 
 /* Mobile menu: stack items vertically */

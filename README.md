@@ -110,7 +110,7 @@ TailwindDNN/
 │   ├── _footer.ascx          ← Footer with links, terms, copyright
 │   └── css/                  ← Tailwind CSS style files
 │       ├── _theme.html       ← Color palettes, fonts, design tokens
-│       ├── _global.html      ← Animations, buttons, hero section, cards
+│       ├── _global.html      ← Hamburger button, mobile menu, base styles
 │       ├── _dnn.html         ← DNN pane/module styles & conflict fixes
 │       └── _dnnUI.html       ← Full DNN UI styling (headings, forms, tables, etc.)
 │
@@ -155,7 +155,7 @@ The header (`includes/_header.ascx`) includes:
 
 - **Top bar** — Login/Register and user info links (dark background).
 - **Main header** — Your site logo + desktop navigation with dropdowns.
-- **Mobile menu** — A hamburger button that toggles a slide-down menu on small screens.
+- **Mobile menu** — A hamburger button that toggles the menu on small screens (no animation).
 
 The header is **sticky** — it stays at the top of the page as you scroll.
 
@@ -208,7 +208,7 @@ All styles live in `includes/css/` as `<style type="text/tailwindcss">` blocks:
 | File            | What It Does                                                         |
 | --------------- | -------------------------------------------------------------------- |
 | `_theme.html`   | Defines your **color palettes** (primary, secondary, accent, tertiary), **fonts**, shadows, and border radius. **Edit this file to change your site's colors and fonts.** |
-| `_global.html`  | Defines reusable **component classes** like `.btn-primary`, `.btn-secondary`, `.nav-link`, `.hero-section`, `.card`, and animations. |
+| `_global.html`  | Defines **base styles** (body font, smooth scrolling), the hamburger button animation, and mobile menu toggle/layout styles. |
 | `_dnn.html`     | Styles for DNN panes (`.dnn-pane`) and modules (`.dnn-module`, `.dnn-module-title`). Also contains overrides to prevent DNN's default CSS from conflicting with Tailwind. |
 | `_dnnUI.html`   | Complete styling for **all standard HTML elements** (headings, paragraphs, lists, tables, forms, inputs, buttons, etc.) so DNN content looks great out of the box. |
 
