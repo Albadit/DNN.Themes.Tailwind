@@ -81,7 +81,7 @@ dist/TailwindDNN_1.0.0_Install.zip
 
 1. Go to **Settings → Site Settings → Appearance** (or **Admin → Site Settings**).
 2. Under **Site Skin**, select **TailwindDNN — default**.
-3. Under **Site Container**, select **TailwindDNN — Title** or **TailwindDNN — NoTitle**.
+3. Under **Site Container**, select **TailwindDNN — Title** or **TailwindDNN — None**.
 4. Click **Save**.
 
 Your site is now using TailwindDNN! 🎉
@@ -101,9 +101,9 @@ TailwindDNN/
 │
 ├── containers/               ← Module containers (wrappers around modules)
 │   ├── Title.ascx            ← Container WITH a module title
-│   └── NoTitle.ascx          ← Container WITHOUT a module title
+│   └── None.ascx             ← Container WITHOUT a module title (bare pane)
 │
-├── includes/                 ← Reusable parts included in the skin
+├── partials/                 ← Reusable parts included in the skin
 │   ├── _registers.ascx       ← DNN control registrations (required)
 │   ├── _includes.ascx        ← CSS/JS includes + Tailwind config
 │   ├── _header.ascx          ← Header with logo, navigation, mobile menu
@@ -111,16 +111,22 @@ TailwindDNN/
 │   └── css/                  ← Tailwind CSS style files
 │       ├── _theme.html       ← Color palettes, fonts, design tokens
 │       ├── _global.html      ← Hamburger button, mobile menu, base styles
-│       ├── _dnn.html         ← DNN pane/module styles & conflict fixes
-│       └── _dnnUI.html       ← Full DNN UI styling (headings, forms, tables, etc.)
+│       ├── _dnn.html         ← DNN login, form, and module styles
+│       └── _UI.html          ← DNN UI component styles (placeholder)
 │
-├── menus/                    ← DDRMenu templates (navigation rendering)
-│   ├── HeaderMenu/           ← Desktop navigation (dropdowns)
-│   └── FooterMenu/           ← Footer navigation (flat links)
+├── menus/                    ← DDRMenu Razor templates (navigation rendering)
+│   ├── header/               ← Desktop navigation (dropdowns)
+│   │   ├── HeaderMenu.cshtml
+│   │   └── menudef.xml
+│   └── footer/               ← Footer navigation (flat links)
+│       ├── FooterMenu.cshtml
+│       └── menudef.xml
 │
 └── src/
+    ├── css/
+    │   └── default.css        ← DNN default skin stylesheet (typography, forms, etc.)
     └── js/
-        └── tailwind4.js      ← Tailwind CSS 4.1 browser runtime (minified)
+        └── tailwind4.js       ← Tailwind CSS 4.1 browser runtime (minified)
 ```
 
 ---
@@ -133,14 +139,11 @@ The main layout is defined in `default.ascx`. It contains **content panes** — 
 
 Here are the available panes:
 
-| Pane Name                  | Width    | Description                          |
-| -------------------------- | -------- | ------------------------------------ |
-| `ContentPane`              | Full     | Full-width top content area          |
-| `DoublePaneOneOne`         | 50%      | Left column of a two-column section  |
-| `DoublePaneOneTwo`         | 50%      | Right column (gray background)       |
-| `FullWidthBGDoublePaneOne` | 50%      | Left column with colored background  |
-| `FullWidthBGDoublePaneTwo` | 50%      | Right column with colored background |
-| `SinglePaneOne`            | Narrow   | Centered narrow content area         |
+| Pane Name      | Description                                       |
+| -------------- | ------------------------------------------------- |
+| `BannerPane`   | Full-width area at the top, ideal for hero/banner  |
+| `ContentPane`  | Full-width main content area                       |
+| `FluidPane`    | Full-width area below content, for extra sections  |
 
 **How to add content to a pane:**
 
@@ -151,7 +154,7 @@ Here are the available panes:
 
 ### Header & Navigation
 
-The header (`includes/_header.ascx`) includes:
+The header (`partials/_header.ascx`) includes:
 
 - **Top bar** — Login/Register and user info links (dark background).
 - **Main header** — Your site logo + desktop navigation with dropdowns.
@@ -161,7 +164,7 @@ The header is **sticky** — it stays at the top of the page as you scroll.
 
 ### Footer
 
-The footer (`includes/_footer.ascx`) includes:
+The footer (`partials/_footer.ascx`) includes:
 
 - Footer navigation links.
 - Terms of Use and Privacy Policy links.
@@ -175,14 +178,14 @@ Containers wrap around individual DNN modules. This skin comes with two:
 | Container  | File           | Use When...                              |
 | ---------- | -------------- | ---------------------------------------- |
 | **Title**  | `Title.ascx`   | You want to show the module's title/heading |
-| **NoTitle** | `NoTitle.ascx` | You want to hide the module's title       |
+| **None**   | `None.ascx`    | You want to hide the module's title (bare content pane) |
 
 **To change a module's container:**
 
 1. Edit the page.
 2. Click the **gear icon** on the module.
 3. Go to **Module Settings → Page Settings**.
-4. Under **Module Container**, select `TailwindDNN - Title` or `TailwindDNN - NoTitle`.
+4. Under **Module Container**, select `TailwindDNN - Title` or `TailwindDNN - None`.
 5. Click **Update**.
 
 ### Styling with Tailwind CSS
@@ -203,14 +206,15 @@ This skin uses **Tailwind CSS 4.1** running in the browser. That means:
 
 ### CSS Files Explained
 
-All styles live in `includes/css/` as `<style type="text/tailwindcss">` blocks:
+Tailwind CSS styles live in `partials/css/` as `<style type="text/tailwindcss">` blocks. A separate plain CSS file handles DNN defaults:
 
-| File            | What It Does                                                         |
-| --------------- | -------------------------------------------------------------------- |
-| `_theme.html`   | Defines your **color palettes** (primary, secondary, accent, tertiary), **fonts**, shadows, and border radius. **Edit this file to change your site's colors and fonts.** |
-| `_global.html`  | Defines **base styles** (body font, smooth scrolling), the hamburger button animation, and mobile menu toggle/layout styles. |
-| `_dnn.html`     | Styles for DNN panes (`.dnn-pane`) and modules (`.dnn-module`, `.dnn-module-title`). Also contains overrides to prevent DNN's default CSS from conflicting with Tailwind. |
-| `_dnnUI.html`   | Complete styling for **all standard HTML elements** (headings, paragraphs, lists, tables, forms, inputs, buttons, etc.) so DNN content looks great out of the box. |
+| File                 | What It Does                                                         |
+| -------------------- | -------------------------------------------------------------------- |
+| `partials/css/_theme.html`  | Defines your **color palettes** (primary, secondary, success, warning, danger, default), **fonts**, shadows, border radius, and layout tokens. Includes light and dark mode variables. **Edit this file to change your site's colors and fonts.** |
+| `partials/css/_global.html` | Defines **base styles** (body font, smooth scrolling), the hamburger button animation, and mobile menu toggle/layout styles. |
+| `partials/css/_dnn.html`    | Styles for DNN login forms, input fields, buttons, remember-me checkbox, and other DNN-specific form components. Uses plain `<style>` (not Tailwind). |
+| `partials/css/_UI.html`     | Placeholder for additional DNN UI component styles (currently empty). |
+| `src/css/default.css`       | DNN default skin stylesheet — typography reset, headings, links, lists, forms, tables, utility classes, and DNN module/pane overrides. |
 
 ### Menus
 
@@ -218,10 +222,10 @@ Menus use DNN's **DDRMenu** system. Menu templates are text files with HTML and 
 
 | Menu           | Location                    | Used For                        |
 | -------------- | --------------------------- | ------------------------------- |
-| **HeaderMenu** | `menus/HeaderMenu/`         | Desktop navigation with dropdown submenus |
-| **FooterMenu** | `menus/FooterMenu/`         | Simple flat footer links        |
+| **HeaderMenu** | `menus/header/`             | Desktop navigation with dropdown submenus |
+| **FooterMenu** | `menus/footer/`             | Simple flat footer links        |
 
-The menu templates use DDRMenu tokens like `[=TEXT]`, `[=URL]`, `[?NODE]`, `[*>NODE]`, etc. to render your DNN page tree as navigation.
+The menu templates are **Razor `.cshtml` files** that use the DNN DDRMenu API (`MenuNode`, `Model.Source.root.Children`, etc.) to render your DNN page tree as navigation. Each folder also contains a `menudef.xml` that tells DDRMenu which template to use.
 
 ---
 
@@ -229,27 +233,36 @@ The menu templates use DDRMenu tokens like `[=TEXT]`, `[=URL]`, `[?NODE]`, `[*>N
 
 ### Change Colors
 
-Open `includes/css/_theme.html` and edit the CSS variables in the `:root` block:
+Open `partials/css/_theme.html` and edit the CSS variables in the `:root` block:
 
 ```css
 :root {
-    /* Primary palette — used for links, buttons, nav highlights */
-    --primary-500: #3b82f6;   /* ← Change this to your brand color */
-    --primary-600: #2563eb;
-    --primary-700: #1d4ed8;
-    /* ... other shades ... */
+    /* Primary — Blue (links, buttons, nav highlights) */
+    --primary-500: #006FEE;   /* ← Change this to your brand color */
+    --primary-600: #005bc4;
+    --primary-700: #004493;
+    /* ... other shades (50–950) ... */
 
-    /* Secondary palette — used for success states, secondary actions */
-    --secondary-500: #22c55e;
+    /* Secondary — Purple */
+    --secondary-500: #7828c8;
 
-    /* Accent palette — used for decorative elements */
-    --accent-500: #a855f7;
+    /* Success — Green */
+    --success-500: #17c964;
+
+    /* Warning — Yellow */
+    --warning-500: #f5a524;
+
+    /* Danger — Red/Pink */
+    --danger-500: #f31260;
+
+    /* Default — Zinc/Neutral */
+    --default-500: #71717a;
 
     /* Footer */
-    --color-footer-bg: #111827;
+    --color-footer-bg: #18181b;
 
     /* Buttons */
-    --color-button-solid-bg: #14b8a6;
+    --color-button-solid-bg: #006FEE;
 }
 ```
 
@@ -257,23 +270,23 @@ Open `includes/css/_theme.html` and edit the CSS variables in the `:root` block:
 
 ### Change Fonts
 
-In the same `_theme.html` file, change the font variables:
+In the same `partials/css/_theme.html` file, change the font variables in the `:root` block:
 
 ```css
-@theme {
+:root {
     --font-sans: "Your Font", ui-sans-serif, system-ui, sans-serif;
     --font-heading: "Your Heading Font", ui-sans-serif, system-ui, sans-serif;
 }
 ```
 
-Then add your font import (e.g., Google Fonts) in `includes/_includes.ascx`.
+Then add your font import (e.g., Google Fonts) in `partials/_includes.ascx`.
 
 ### Edit the Layout
 
 Open `default.ascx` to change the page structure. Each `<div>` with `runat="server"` is a DNN content pane:
 
 ```html
-<div id="ContentPane" class="w-full prose text-center max-w-none" runat="server"></div>
+<div id="ContentPane" class="flex flex-col w-full justify-center" runat="server"></div>
 ```
 
 You can change Tailwind classes to adjust width, padding, alignment, etc.
@@ -328,7 +341,7 @@ Run the build script from the project root:
 
 **What it does:**
 
-1. Packages all skin files (`.ascx`, `includes/`, `menus/`, `src/js/`) into `Resources.zip`.
+1. Packages all skin files (`.ascx`, `partials/`, `menus/`, `src/`) into `Resources.zip`.
 2. Packages container files into `ContainerResources.zip`.
 3. Combines everything with `manifest.dnn`, `License.txt`, and `ReleaseNotes.txt` into the final install zip.
 
@@ -352,7 +365,7 @@ You can customize the output directory:
 
 1. Go to **Settings → Site Settings → Appearance**.
 2. Set **Site Skin** to `TailwindDNN — default`.
-3. Set **Site Container** to `TailwindDNN — Title` (or `NoTitle`).
+3. Set **Site Container** to `TailwindDNN — Title` (or `None`).
 4. Click **Save**.
 
 ### Apply to a Single Page
@@ -380,7 +393,7 @@ You can customize the output directory:
 | Styles don't load / page looks unstyled | Make sure `src/js/tailwind4.js` is included. Check the browser console for errors. |
 | DNN default styles override Tailwind | The skin includes conflict overrides in `_dnn.html`. If you see conflicts, add more resets there. |
 | Mobile menu doesn't open | Check that the hamburger button's `onclick` targets `#mobile-menu` and the `<div id="mobile-menu">` exists. |
-| Navigation dropdowns don't show | Ensure the `menus/HeaderMenu/` folder was included in the build. Check the DDRMenu module is installed. |
+| Navigation dropdowns don't show | Ensure the `menus/header/` folder was included in the build. Check the DDRMenu module is installed. |
 | Build script fails | Make sure you're running PowerShell 5.1+ and you're in the project root folder. |
 | Package won't install in DNN | Verify `manifest.dnn` is well-formed XML. Check the DNN event log for detailed error messages. |
 
