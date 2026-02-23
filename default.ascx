@@ -5,7 +5,7 @@
 <!--#include file="partials/_header.ascx" -->
 
 <!-- Main Content -->
-<main class="flex flex-col justify-center">
+<main class="flex flex-col itmes-center">
     <div id="BannerPane" runat="server"></div>
     <div id="ContentPane" class="w-full max-w-3xl" runat="server"></div> 
     <div id="FluidPane" runat="server"></div>
