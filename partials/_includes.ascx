@@ -5,7 +5,8 @@
 <dnn:DnnCssInclude runat="server" FilePath="src/css/default.css" Priority="2" PathNameAlias="SkinPath" />
 
 <!-- Tailwind CSS Browser Runtime: compiles Tailwind classes in the browser from the <style> block below -->
-<dnn:DnnJsInclude runat="server" FilePath="src/js/tailwind4.js" Priority="5" PathNameAlias="SkinPath" ForceProvider="DnnFormBottomProvider" />
+<dnn:DnnJsInclude runat="server" FilePath="src/js/tailwind4.js" Priority="100" PathNameAlias="SkinPath" ForceProvider="DnnFormBottomProvider" />
+<dnn:DnnJsInclude runat="server" FilePath="src/js/lucide.min.js" Priority="100" PathNameAlias="SkinPath" ForceProvider="DnnFormBottomProvider" />
 
 <!-- Tailwind theme config for browser runtime to process -->
 <!--#include file="css/_theme.html" -->
