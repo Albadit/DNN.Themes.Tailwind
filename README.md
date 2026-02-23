@@ -1,10 +1,10 @@
 # TailwindDNN
 
-A modern, responsive skin (theme) for **DNN 10** built with **Tailwind CSS 4.1.18** and **Lucide Icons 0.575.0**. It features a clean design with mobile-first responsive layout, sticky navigation, hero sections, and custom containers — all styled using utility-first Tailwind classes compiled in the browser.
+A modern, responsive skin (theme) for **DNN 10** built with **Tailwind CSS 4.2.0** and **Lucide Icons 0.575.0**. It features a clean design with mobile-first responsive layout, sticky navigation, hero sections, and custom containers — all styled using utility-first Tailwind classes compiled in the browser.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![DNN](https://img.shields.io/badge/DNN-10%2B-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1.18-38bdf8)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.2.0-38bdf8)
 ![Lucide](https://img.shields.io/badge/Lucide-0.575.0-f97316)
 
 ---
@@ -49,7 +49,7 @@ If you run a website on **DNN (DotNetNuke)**, a "skin" controls how your site lo
 | Requirement       | Version        |
 | ----------------- | -------------- |
 | DNN Platform      | 10.0.0 or later |
-| Tailwind CSS      | 4.1.18 (browser build, bundled) |
+| Tailwind CSS      | 4.2.0 (browser build, bundled) |
 | Lucide Icons      | 0.575.0 (bundled) |
 | Browser           | Any modern browser (Chrome, Firefox, Edge, Safari) |
 | Build (optional)  | PowerShell 5.1+ (Windows) — only needed to create the install package |
