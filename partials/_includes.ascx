@@ -8,6 +8,13 @@
 <dnn:DnnJsInclude runat="server" FilePath="src/js/tailwind4.js" Priority="100" PathNameAlias="SkinPath" ForceProvider="DnnFormBottomProvider" />
 <dnn:DnnJsInclude runat="server" FilePath="src/js/lucide.min.js" Priority="100" PathNameAlias="SkinPath" ForceProvider="DnnFormBottomProvider" />
 
+<!-- Initialize Lucide icons globally after the DOM is ready -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.lucide) lucide.createIcons();
+  });
+</script>
+
 <!-- Tailwind theme config for browser runtime to process -->
 <!--#include file="css/_theme.html" -->
 <!--#include file="css/_global.html" -->
