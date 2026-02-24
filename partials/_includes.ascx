@@ -1,6 +1,11 @@
 <dnn:META ID="mobileScale" runat="server" Name="viewport" Content="width=device-width, initial-scale=1.0" />
 <dnn:DnnCssExclude runat="server" Name="dnndefault" />
 
+<!-- Google Fonts: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+
 <!-- DNN  default skin CSS -->
 <dnn:DnnCssInclude runat="server" FilePath="src/css/default.css" Priority="2" PathNameAlias="SkinPath" />
 
@@ -19,5 +24,3 @@
 <!--#include file="css/_theme.html" -->
 <!--#include file="css/_global.html" -->
 <!--#include file="css/_dnn.html" -->
-
-
