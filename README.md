@@ -14,6 +14,7 @@ A modern, responsive skin (theme) for **DNN 10** built with **Tailwind CSS 4.2.0
 - [What Is This?](#what-is-this)
 - [Requirements](#requirements)
 - [Quick Start — Install in 3 Steps](#quick-start--install-in-3-steps)
+- [VS Code Setup](#vs-code-setup)
 - [Project Structure](#project-structure)
 - [How the Skin Works](#how-the-skin-works)
   - [Layout (Content Panes)](#layout-content-panes)
@@ -88,6 +89,36 @@ dist/TailwindDNN_1.0.0_Install.zip
 4. Click **Save**.
 
 Your site is now using TailwindDNN! 🎉
+
+---
+
+## VS Code Setup
+
+For the best development experience with **Tailwind CSS IntelliSense** (autocomplete, linting, hover previews) in DNN skin files, add the following to your VS Code **settings.json** (workspace or user settings):
+
+```json
+{
+  "tailwindCSS.includeLanguages": {
+    "aspnetcorerazor": "html",
+    "razor": "html",
+    "cshtml": "html",
+    "html": "html",
+    "xml": "html"
+  },
+  "tailwindCSS.emmetCompletions": true
+}
+```
+
+**What each setting does:**
+
+| Setting | Purpose |
+| ------- | ------- |
+| `tailwindCSS.includeLanguages` | Enables Tailwind IntelliSense in Razor/cshtml files by treating them as HTML. |
+| `tailwindCSS.emmetCompletions` | Enables Emmet-style completions for Tailwind classes (e.g., typing `bg-` shows suggestions). |
+
+> **Note:** You need the [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension installed in VS Code for the `tailwindCSS.*` settings to work.
+
+> **Tip:** If you're editing the skin directly inside your DNN installation folder, create a `.vscode/settings.json` file at the DNN site root with these settings for a workspace-level configuration.
 
 ---
 
