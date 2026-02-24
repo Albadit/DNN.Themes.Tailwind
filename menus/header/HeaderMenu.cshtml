@@ -3,27 +3,17 @@
 @inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<dynamic>
 
 <ul class="w-full flex lg:flex-row flex-col gap-2">
-    @RenderPages(Model.Source.root.Children)
-</ul>
-
-@helper RenderPages(IEnumerable<MenuNode> pages)
-{
-    if (!pages.Any())
+    @foreach (var node in Model.Source.root.Children)
     {
-        return;
-    }
-
-    foreach (var page in pages)
-    {
-        var hasChildren = page.HasChildren();
-        var attrTarget = !string.IsNullOrEmpty(page.Target) ? ("target=\"" + page.Target + "\"") : string.Empty;
-        var attrHref = page.Enabled ? page.Url : "javascript:void(0);";
+        var hasChildren = node.HasChildren();
+        var attrTarget = !string.IsNullOrEmpty(node.Target) ? ("target=\"" + node.Target + "\"") : string.Empty;
+        var attrHref = node.Enabled ? node.Url : "javascript:void(0);";
 
         <li class="group">
-            @if (page.Enabled)
+            @if (node.Enabled)
             {
-                <a href="@attrHref" @attrTarget class="inline-flex items-center px-4 py-2 font-bold uppercase tracking-wide !text-white rounded-md !no-underline transition-colors duration-150 hover:bg-white/15 hover:no-underline !hover:text-white @(page.Selected ? "bg-white/15" : "")">
-                    @page.Text
+                <a href="@attrHref" @attrTarget class="inline-flex items-center px-4 py-2 font-bold uppercase tracking-wide text-white! rounded-md no-underline! transition-colors duration-150 hover:bg-white/15 hover:no-underline !hover:text-white @(node.Selected ? "bg-white/15" : "")">
+                    @node.Text
                     @if (hasChildren)
                     {
                         <svg class="ml-1 h-4 w-4 text-white/50 transition-colors duration-150 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -35,46 +25,36 @@
             else
             {
                 <span class="inline-flex items-center px-4 py-2 font-bold uppercase tracking-wide text-white/40 cursor-default">
-                    @page.Text
+                    @node.Text
                 </span>
             }
             @if (hasChildren)
             {
                 <div class="invisible opacity-0 absolute left-0 top-full z-50 mt-0 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black/5 transition-all duration-150 ease-in-out group-hover:visible group-hover:opacity-100">
                     <ul class="py-1 list-none m-0">
-                        @RenderSubPages(page.Children)
+                        @foreach (var child in node.Children)
+                        {
+                            var childTarget = !string.IsNullOrEmpty(child.Target) ? ("target=\"" + child.Target + "\"") : string.Empty;
+                            var childHref = child.Enabled ? child.Url : "javascript:void(0);";
+
+                            <li>
+                                @if (child.Enabled)
+                                {
+                                    <a href="@childHref" @childTarget class="block px-4 py-2 text-gray-700 no-underline transition-colors duration-150 hover:bg-gray-50 hover:text-cyan-700 hover:no-underline @(child.Selected ? "!text-cyan-700 !font-medium !bg-gray-50" : "")">
+                                        @child.Text
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="block px-4 py-2 text-gray-400 cursor-default @(child.Selected ? "!text-cyan-700 !font-medium" : "")">
+                                        @child.Text
+                                    </span>
+                                }
+                            </li>
+                        }
                     </ul>
                 </div>
             }
         </li>
     }
-}
-
-@helper RenderSubPages(IEnumerable<MenuNode> pages)
-{
-    if (!pages.Any())
-    {
-        return;
-    }
-
-    foreach (var page in pages)
-    {
-        var attrTarget = !string.IsNullOrEmpty(page.Target) ? ("target=\"" + page.Target + "\"") : string.Empty;
-        var attrHref = page.Enabled ? page.Url : "javascript:void(0);";
-
-        <li>
-            @if (page.Enabled)
-            {
-                <a href="@attrHref" @attrTarget class="block px-4 py-2 text-gray-700 no-underline transition-colors duration-150 hover:bg-gray-50 hover:text-cyan-700 hover:no-underline @(page.Selected ? "!text-cyan-700 !font-medium !bg-gray-50" : "")">
-                    @page.Text
-                </a>
-            }
-            else
-            {
-                <span class="block px-4 py-2 text-gray-400 cursor-default @(page.Selected ? "!text-cyan-700 !font-medium" : "")">
-                    @page.Text
-                </span>
-            }
-        </li>
-    }
-}
+</ul>
