@@ -4,63 +4,6 @@
  * Changes will be overwritten upon upgrades.
  * 
  */
-
-html {
-  color: var(--dnn-color-foreground, #222);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: var(--dnn-base-font-size, 16px)
-}
-
-body {
-  background-color: var(--dnn-color-background, #fff);
-  font-family: inherit;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin: 0
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  font-weight: inherit;
-  line-height: 1.4;
-  margin-bottom: .75rem;
-  margin-top: 1rem
-}
-
-h1 {
-  font-size: 2.375rem
-}
-
-h2 {
-  font-size: 2rem
-}
-
-h3 {
-  font-size: 1.75rem
-}
-
-h4 {
-  font-size: 1.375rem
-}
-
-h5 {
-  font-size: 1.125rem
-}
-
-h6 {
-  font-size: 1rem
-}
-
-p {
-  margin-bottom: 1.125rem
-}
-
 .left {
   float: left
 }
@@ -2063,5 +2006,3 @@ h2.dnnFormSectionHead h2.dnnFormSectionHead a.dnnSectionExpanded:hover {
   background: rgba(var(--dnn-color-primary-r, 2), var(--dnn-color-primary-g, 139), var(--dnn-color-primary-b, 255), .05) url(../../../../../../images/up-icn.png) no-repeat right 50%;
   color: var(--dnn-color-foreground, #222)
 }
-
-/*# sourceMappingURL=default.css.map */
