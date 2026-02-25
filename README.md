@@ -158,7 +158,9 @@ TailwindDNN/
 │
 └── src/
     ├── css/
-    │   └── default.css        ← DNN default skin stylesheet (typography, forms, etc.)
+    │   ├── default.css        ← DNN default skin stylesheet (typography, forms, etc.)
+    │   ├── dnn.css            ← DNN custom skin stylesheet
+    │   └── tailwind.css       ← Tailwind theme config for VS Code IntelliSense (keep in sync with _theme.html)
     └── js/
         └── tailwind4.js       ← Tailwind CSS 4.1 browser runtime (minified)
 ```
@@ -249,6 +251,7 @@ Tailwind CSS styles live in `partials/css/` as `<style type="text/tailwindcss">`
 | `partials/css/_dnn.html`    | Because the skin disables DNN's default CSS (`DnnCssExclude`), this file **re-styles the built-in DNN modules** (login forms, inputs, buttons, checkboxes, etc.) so they look correct with the new design. Uses plain `<style>` (not Tailwind). |
 | `partials/css/_UI.html`     | Your custom **Tailwind UI component library**. Add reusable `@layer components` classes here (e.g., `.btn-primary`, `.card`, `.hero-section`) to build a design system that you can use across the skin and DNN modules (currently empty). |
 | `src/css/default.css`       | DNN default skin stylesheet — typography reset, headings, links, lists, forms, tables, utility classes, and DNN module/pane overrides. |
+| `src/css/tailwind.css`      | Tailwind CSS config file used **only for VS Code IntelliSense** (autocomplete, hover previews). Contains hardcoded values mirroring `_theme.html`. **Not used in production.** Must be kept in sync manually — see note below. |
 
 ### Menus
 
@@ -301,6 +304,8 @@ Open `partials/css/_theme.html` and edit the CSS variables in the `:root` block:
 ```
 
 > **Tip:** Use [Tailwind CSS Color Generator](https://uicolors.app/create) to generate a full color palette from a single brand color.
+
+> **Important:** After changing colors or design tokens in `_theme.html`, you must also update `src/css/tailwind.css` with the same values to keep VS Code IntelliSense accurate. The `tailwind.css` file is not used in production — it only exists so the Tailwind CSS IntelliSense extension can provide autocomplete and hover previews for your custom theme tokens.
 
 ### Change Fonts
 
