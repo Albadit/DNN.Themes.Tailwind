@@ -5,9 +5,9 @@
 <!--#include file="partials/_header.ascx" -->
 
 <!-- Main Content -->
-<main class="flex flex-col items-center">
+<main class="flex items-center">
     <div id="BannerPane" runat="server"></div>
-    <div id="ContentPane" class="w-full max-w-3xl" runat="server"></div> 
+    <div id="ContentPane" class="w-full flex flex-col items-center justify-center" runat="server"></div> 
     <div id="FluidPane" runat="server"></div>
 </main>
 
