@@ -133,23 +133,28 @@ TailwindDNN/
 ├── License.txt               ← MIT License
 ├── ReleaseNotes.txt          ← Version history
 │
+├── .vscode/                  ← VS Code workspace settings
+│   └── settings.json         ← Tailwind CSS IntelliSense configuration
+│
 ├── containers/               ← Module containers (wrappers around modules)
 │   ├── Title.ascx            ← Container WITH a module title
 │   └── None.ascx             ← Container WITHOUT a module title (bare pane)
 │
 ├── css/                      ← All CSS and Tailwind style files
 │   ├── default.css           ← DNN default skin stylesheet (typography, forms, etc.)
+│   ├── dnn.css               ← DNN pane & module component styles
+│   ├── tailwind.css          ← Tailwind config for VS Code IntelliSense (not used in production)
 │   ├── _theme.html           ← Color palettes, fonts, design tokens
 │   ├── _global.html          ← Hamburger button, mobile menu, base styles
-│   ├── _dnn.html             ← DNN login, form, and module styles
 │   └── _UI.html              ← Your custom Tailwind UI component library
 │
 ├── js/                       ← JavaScript files
-│   └── tailwind4.js          ← Tailwind CSS 4.1 browser runtime (minified)
+│   ├── tailwind4.js          ← Tailwind CSS 4.2.0 browser runtime (minified)
+│   ├── lucide.min.js         ← Lucide Icons 0.575.0 (minified)
 │
 ├── partials/                 ← Reusable parts included in the skin
 │   ├── _registers.ascx       ← DNN control registrations (required)
-│   ├── _includes.ascx        ← CSS/JS includes + Tailwind config
+│   ├── _includes.ascx        ← CSS/JS includes, fonts, Tailwind + Lucide config
 │   ├── _header.ascx          ← Header with logo, navigation, mobile menu
 │   └── _footer.ascx          ← Footer with links, terms, copyright
 │
@@ -223,7 +228,7 @@ Containers wrap around individual DNN modules. This skin comes with two:
 
 ### Styling with Tailwind CSS
 
-This skin uses **Tailwind CSS 4.1** running in the browser. That means:
+This skin uses **Tailwind CSS 4.2.0** running in the browser. That means:
 
 - **No build step for CSS** — Tailwind compiles classes on-the-fly in the browser.
 - You style elements by adding Tailwind utility classes directly in the HTML.
@@ -245,9 +250,10 @@ Tailwind CSS styles live in `css/` as `<style type="text/tailwindcss">` blocks. 
 | -------------------- | -------------------------------------------------------------------- |
 | `css/_theme.html`  | Defines your **color palettes** (primary, secondary, success, warning, danger, default), **fonts**, shadows, border radius, and layout tokens. Includes light and dark mode variables. **Edit this file to change your site's colors and fonts.** |
 | `css/_global.html` | Defines **base styles** (body font, smooth scrolling), the hamburger button animation, and mobile menu toggle/layout styles. |
-| `css/_dnn.html`    | Because the skin disables DNN's default CSS (`DnnCssExclude`), this file **re-styles the built-in DNN modules** (login forms, inputs, buttons, checkboxes, etc.) so they look correct with the new design. Uses plain `<style>` (not Tailwind). |
 | `css/_UI.html`     | Your custom **Tailwind UI component library**. Add reusable `@layer components` classes here (e.g., `.btn-primary`, `.card`, `.hero-section`) to build a design system that you can use across the skin and DNN modules (currently empty). |
 | `css/default.css`  | DNN default skin stylesheet — typography reset, headings, links, lists, forms, tables, utility classes, and DNN module/pane overrides. |
+| `css/dnn.css`      | DNN pane & module component styles — because the skin disables DNN's default CSS (`DnnCssExclude`), this file re-styles the built-in DNN modules (login forms, inputs, buttons, checkboxes, etc.) so they look correct with the new design. |
+| `css/tailwind.css`  | Tailwind config mirror for **VS Code IntelliSense only** — keeps autocomplete and hover previews accurate for your custom theme tokens. Not used in production. |
 
 ### Menus
 
@@ -301,7 +307,7 @@ Open `css/_theme.html` and edit the CSS variables in the `:root` block:
 
 > **Tip:** Use [Tailwind CSS Color Generator](https://uicolors.app/create) to generate a full color palette from a single brand color.
 
-> **Important:** After changing colors or design tokens in `_theme.html`, you must also update `src/css/tailwind.css` with the same values to keep VS Code IntelliSense accurate. The `tailwind.css` file is not used in production — it only exists so the Tailwind CSS IntelliSense extension can provide autocomplete and hover previews for your custom theme tokens.
+> **Important:** After changing colors or design tokens in `_theme.html`, you must also update `css/tailwind.css` with the same values to keep VS Code IntelliSense accurate. The `tailwind.css` file is not used in production — it only exists so the Tailwind CSS IntelliSense extension can provide autocomplete and hover previews for your custom theme tokens.
 
 ### Change Fonts
 
@@ -426,7 +432,7 @@ You can customize the output directory:
 | Problem | Solution |
 | ------- | -------- |
 | Styles don't load / page looks unstyled | Make sure `js/tailwind4.js` is included. Check the browser console for errors. |
-| DNN default styles override Tailwind | The skin includes conflict overrides in `_dnn.html`. If you see conflicts, add more resets there. |
+| DNN default styles override Tailwind | The skin includes conflict overrides in `dnn.css`. If you see conflicts, add more resets there. |
 | Mobile menu doesn't open | Check that the hamburger button's `onclick` targets `#mobile-menu` and the `<div id="mobile-menu">` exists. |
 | Navigation dropdowns don't show | Ensure the `menus/header/` folder was included in the build. Check the DDRMenu module is installed. |
 | Build script fails | Make sure you're running PowerShell 5.1+ and you're in the project root folder. |
