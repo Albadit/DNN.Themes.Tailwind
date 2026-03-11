@@ -57,13 +57,6 @@ try {
         Write-Host "    + partials\" -ForegroundColor DarkGray
     }
 
-    # Copy src folder (js, font, css, etc.)
-    if (Test-Path ".\src") {
-        $srcDir = Join-Path $tempDir "src"
-        Copy-Item ".\src" -Destination $srcDir -Recurse
-        Write-Host "    + src\" -ForegroundColor DarkGray
-    }
-
     # Copy skin.doctype.xml
     if (Test-Path ".\skin.doctype.xml") {
         Copy-Item ".\skin.doctype.xml" -Destination $tempDir

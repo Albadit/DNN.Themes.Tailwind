@@ -103,30 +103,29 @@ TailwindDNN/
 │   ├── Title.ascx            ← Container WITH a module title
 │   └── None.ascx             ← Container WITHOUT a module title (bare pane)
 │
+├── css/                      ← All CSS and Tailwind style files
+│   ├── default.css           ← DNN default skin stylesheet (typography, forms, etc.)
+│   ├── _theme.html           ← Color palettes, fonts, design tokens
+│   ├── _global.html          ← Hamburger button, mobile menu, base styles
+│   ├── _dnn.html             ← DNN login, form, and module styles
+│   └── _UI.html              ← Your custom Tailwind UI component library
+│
+├── js/                       ← JavaScript files
+│   └── tailwind4.js          ← Tailwind CSS 4.1 browser runtime (minified)
+│
 ├── partials/                 ← Reusable parts included in the skin
 │   ├── _registers.ascx       ← DNN control registrations (required)
 │   ├── _includes.ascx        ← CSS/JS includes + Tailwind config
 │   ├── _header.ascx          ← Header with logo, navigation, mobile menu
-│   ├── _footer.ascx          ← Footer with links, terms, copyright
-│   └── css/                  ← Tailwind CSS style files
-│       ├── _theme.html       ← Color palettes, fonts, design tokens
-│       ├── _global.html      ← Hamburger button, mobile menu, base styles
-│       ├── _dnn.html         ← DNN login, form, and module styles
-│       └── _UI.html          ← Your custom Tailwind UI component library
+│   └── _footer.ascx          ← Footer with links, terms, copyright
 │
-├── menus/                    ← DDRMenu Razor templates (navigation rendering)
-│   ├── header/               ← Desktop navigation (dropdowns)
-│   │   ├── HeaderMenu.cshtml
-│   │   └── menudef.xml
-│   └── footer/               ← Footer navigation (flat links)
-│       ├── FooterMenu.cshtml
-│       └── menudef.xml
-│
-└── src/
-    ├── css/
-    │   └── default.css        ← DNN default skin stylesheet (typography, forms, etc.)
-    └── js/
-        └── tailwind4.js       ← Tailwind CSS 4.1 browser runtime (minified)
+└── menus/                    ← DDRMenu Razor templates (navigation rendering)
+    ├── header/               ← Desktop navigation (dropdowns)
+    │   ├── HeaderMenu.cshtml
+    │   └── menudef.xml
+    └── footer/               ← Footer navigation (flat links)
+        ├── FooterMenu.cshtml
+        └── menudef.xml
 ```
 
 ---
@@ -194,7 +193,7 @@ This skin uses **Tailwind CSS 4.1** running in the browser. That means:
 
 - **No build step for CSS** — Tailwind compiles classes on-the-fly in the browser.
 - You style elements by adding Tailwind utility classes directly in the HTML.
-- The browser runtime (`src/js/tailwind4.js`) reads `<style type="text/tailwindcss">` blocks and generates the CSS.
+- The browser runtime (`js/tailwind4.js`) reads `<style type="text/tailwindcss">` blocks and generates the CSS.
 
 **Example:** To make a div with blue background and white text:
 
@@ -206,15 +205,15 @@ This skin uses **Tailwind CSS 4.1** running in the browser. That means:
 
 ### CSS Files Explained
 
-Tailwind CSS styles live in `partials/css/` as `<style type="text/tailwindcss">` blocks. A separate plain CSS file handles DNN defaults:
+Tailwind CSS styles live in `css/` as `<style type="text/tailwindcss">` blocks. A separate plain CSS file handles DNN defaults:
 
 | File                 | What It Does                                                         |
 | -------------------- | -------------------------------------------------------------------- |
-| `partials/css/_theme.html`  | Defines your **color palettes** (primary, secondary, success, warning, danger, default), **fonts**, shadows, border radius, and layout tokens. Includes light and dark mode variables. **Edit this file to change your site's colors and fonts.** |
-| `partials/css/_global.html` | Defines **base styles** (body font, smooth scrolling), the hamburger button animation, and mobile menu toggle/layout styles. |
-| `partials/css/_dnn.html`    | Because the skin disables DNN's default CSS (`DnnCssExclude`), this file **re-styles the built-in DNN modules** (login forms, inputs, buttons, checkboxes, etc.) so they look correct with the new design. Uses plain `<style>` (not Tailwind). |
-| `partials/css/_UI.html`     | Your custom **Tailwind UI component library**. Add reusable `@layer components` classes here (e.g., `.btn-primary`, `.card`, `.hero-section`) to build a design system that you can use across the skin and DNN modules (currently empty). |
-| `src/css/default.css`       | DNN default skin stylesheet — typography reset, headings, links, lists, forms, tables, utility classes, and DNN module/pane overrides. |
+| `css/_theme.html`  | Defines your **color palettes** (primary, secondary, success, warning, danger, default), **fonts**, shadows, border radius, and layout tokens. Includes light and dark mode variables. **Edit this file to change your site's colors and fonts.** |
+| `css/_global.html` | Defines **base styles** (body font, smooth scrolling), the hamburger button animation, and mobile menu toggle/layout styles. |
+| `css/_dnn.html`    | Because the skin disables DNN's default CSS (`DnnCssExclude`), this file **re-styles the built-in DNN modules** (login forms, inputs, buttons, checkboxes, etc.) so they look correct with the new design. Uses plain `<style>` (not Tailwind). |
+| `css/_UI.html`     | Your custom **Tailwind UI component library**. Add reusable `@layer components` classes here (e.g., `.btn-primary`, `.card`, `.hero-section`) to build a design system that you can use across the skin and DNN modules (currently empty). |
+| `css/default.css`  | DNN default skin stylesheet — typography reset, headings, links, lists, forms, tables, utility classes, and DNN module/pane overrides. |
 
 ### Menus
 
@@ -233,7 +232,7 @@ The menu templates are **Razor `.cshtml` files** that use the DNN DDRMenu API (`
 
 ### Change Colors
 
-Open `partials/css/_theme.html` and edit the CSS variables in the `:root` block:
+Open `css/_theme.html` and edit the CSS variables in the `:root` block:
 
 ```css
 :root {
@@ -270,7 +269,7 @@ Open `partials/css/_theme.html` and edit the CSS variables in the `:root` block:
 
 ### Change Fonts
 
-In the same `partials/css/_theme.html` file, change the font variables in the `:root` block:
+In the same `css/_theme.html` file, change the font variables in the `:root` block:
 
 ```css
 :root {
@@ -341,7 +340,7 @@ Run the build script from the project root:
 
 **What it does:**
 
-1. Packages all skin files (`.ascx`, `partials/`, `menus/`, `src/`) into `Resources.zip`.
+1. Packages all skin files (`.ascx`, `partials/`, `menus/`, `css/`, `js/`) into `Resources.zip`.
 2. Packages container files into `ContainerResources.zip`.
 3. Combines everything with `manifest.dnn`, `License.txt`, and `ReleaseNotes.txt` into the final install zip.
 
@@ -390,7 +389,7 @@ You can customize the output directory:
 
 | Problem | Solution |
 | ------- | -------- |
-| Styles don't load / page looks unstyled | Make sure `src/js/tailwind4.js` is included. Check the browser console for errors. |
+| Styles don't load / page looks unstyled | Make sure `js/tailwind4.js` is included. Check the browser console for errors. |
 | DNN default styles override Tailwind | The skin includes conflict overrides in `_dnn.html`. If you see conflicts, add more resets there. |
 | Mobile menu doesn't open | Check that the hamburger button's `onclick` targets `#mobile-menu` and the `<div id="mobile-menu">` exists. |
 | Navigation dropdowns don't show | Ensure the `menus/header/` folder was included in the build. Check the DDRMenu module is installed. |
