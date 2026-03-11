@@ -13,8 +13,8 @@
 <dnn:DnnJsInclude runat="server" FilePath="src/js/tailwind4.js" Priority="5" PathNameAlias="SkinPath" ForceProvider="DnnFormBottomProvider" />
 
 <!-- Tailwind theme config for browser runtime to process -->
-<!--#include file="css/_theme.html" -->
-<!--#include file="css/_global.html" -->
-<!--#include file="css/_dnn.html" -->
+<!--#include file="../css/_theme.html" -->
+<!--#include file="../css/_global.html" -->
+<!--#include file="../css/_dnn.html" -->
 
 
