@@ -1,10 +1,11 @@
 # TailwindDNN
 
-A modern, responsive skin (theme) for **DNN 10** built with **Tailwind CSS 4.1**. It features a clean design with mobile-first responsive layout, sticky navigation, hero sections, and custom containers — all styled using utility-first Tailwind classes compiled in the browser.
+A modern, responsive skin (theme) for **DNN 10** built with **Tailwind CSS 4.2.0** and **Lucide Icons 0.575.0**. It features a clean design with mobile-first responsive layout, sticky navigation, hero sections, and custom containers — all styled using utility-first Tailwind classes compiled in the browser.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![DNN](https://img.shields.io/badge/DNN-10%2B-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1-38bdf8)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.2.0-38bdf8)
+![Lucide](https://img.shields.io/badge/Lucide-0.575.0-f97316)
 
 ---
 
@@ -13,6 +14,7 @@ A modern, responsive skin (theme) for **DNN 10** built with **Tailwind CSS 4.1**
 - [What Is This?](#what-is-this)
 - [Requirements](#requirements)
 - [Quick Start — Install in 3 Steps](#quick-start--install-in-3-steps)
+- [VS Code Setup](#vs-code-setup)
 - [Project Structure](#project-structure)
 - [How the Skin Works](#how-the-skin-works)
   - [Layout (Content Panes)](#layout-content-panes)
@@ -48,6 +50,8 @@ If you run a website on **DNN (DotNetNuke)**, a "skin" controls how your site lo
 | Requirement       | Version        |
 | ----------------- | -------------- |
 | DNN Platform      | 10.0.0 or later |
+| Tailwind CSS      | 4.2.0 (browser build, bundled) |
+| Lucide Icons      | 0.575.0 (bundled) |
 | Browser           | Any modern browser (Chrome, Firefox, Edge, Safari) |
 | Build (optional)  | PowerShell 5.1+ (Windows) — only needed to create the install package |
 
@@ -85,6 +89,36 @@ dist/TailwindDNN_1.0.0_Install.zip
 4. Click **Save**.
 
 Your site is now using TailwindDNN! 🎉
+
+---
+
+## VS Code Setup
+
+For the best development experience with **Tailwind CSS IntelliSense** (autocomplete, linting, hover previews) in DNN skin files, add the following to your VS Code **settings.json** (workspace or user settings):
+
+```json
+{
+  "tailwindCSS.includeLanguages": {
+    "aspnetcorerazor": "html",
+    "razor": "html",
+    "cshtml": "html",
+    "html": "html",
+    "xml": "html"
+  },
+  "tailwindCSS.emmetCompletions": true
+}
+```
+
+**What each setting does:**
+
+| Setting | Purpose |
+| ------- | ------- |
+| `tailwindCSS.includeLanguages` | Enables Tailwind IntelliSense in Razor/cshtml files by treating them as HTML. |
+| `tailwindCSS.emmetCompletions` | Enables Emmet-style completions for Tailwind classes (e.g., typing `bg-` shows suggestions). |
+
+> **Note:** You need the [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension installed in VS Code for the `tailwindCSS.*` settings to work.
+
+> **Tip:** If you're editing the skin directly inside your DNN installation folder, create a `.vscode/settings.json` file at the DNN site root with these settings for a workspace-level configuration.
 
 ---
 
@@ -266,6 +300,8 @@ Open `css/_theme.html` and edit the CSS variables in the `:root` block:
 ```
 
 > **Tip:** Use [Tailwind CSS Color Generator](https://uicolors.app/create) to generate a full color palette from a single brand color.
+
+> **Important:** After changing colors or design tokens in `_theme.html`, you must also update `src/css/tailwind.css` with the same values to keep VS Code IntelliSense accurate. The `tailwind.css` file is not used in production — it only exists so the Tailwind CSS IntelliSense extension can provide autocomplete and hover previews for your custom theme tokens.
 
 ### Change Fonts
 

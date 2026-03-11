@@ -1,4 +1,3 @@
-﻿<style>
 /* ==========================================================================
    DNN Pane & Module Components
    Skin-level layout for DNN panes and module containers.
@@ -605,13 +604,8 @@
    and empty-pane outlines.
    ========================================================================== */
 
-/* ---- Floating Module (being dragged) ---- */
-.DnnModule.floating.drift {
-  z-index: 9999;
-  opacity: 0.95;
-  pointer-events: auto;
+.dnnModuleManager .DnnModule.floating, .dnnModuleSorting .DnnModule.floating {
   border-radius: 1rem;
-  overflow: hidden;
 }
 
 /* ---- Drag Hint Card ---- */
@@ -759,4 +753,153 @@
   min-width: 110px !important;
   border-radius: var(--radius-card);
 }
-</style>
+
+/* ==========================================================================
+   DNN Confirmation / jQuery UI Dialog
+   ========================================================================== */
+
+/* ---- Dialog Container ---- */
+.ui-dialog.dnnFormPopup {
+  border: none !important;
+  border-radius: var(--radius-card) !important;
+  background: white !important;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+  padding: 0 !important;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+/* ---- Title Bar ---- */
+.ui-dialog.dnnFormPopup .ui-dialog-titlebar {
+  background: var(--default-50) !important;
+  border: none !important;
+  border-bottom: 1px solid var(--default-200) !important;
+  border-radius: 0 !important;
+  padding: 0.875rem 1.25rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ui-dialog.dnnFormPopup .ui-dialog-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--default-900);
+  margin: 0;
+  float: none;
+}
+
+/* ---- Title Bar Close Button ---- */
+.ui-dialog.dnnFormPopup .ui-dialog-titlebar-close {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-button);
+  color: var(--default-400);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  position: static !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0;
+}
+
+.ui-dialog.dnnFormPopup .ui-dialog-titlebar-close:hover {
+  background-color: var(--default-100);
+  color: var(--default-700);
+}
+
+.ui-dialog.dnnFormPopup .ui-dialog-titlebar-close::after {
+  content: "\2715";
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.ui-dialog.dnnFormPopup .ui-dialog-titlebar-close .ui-button-icon,
+.ui-dialog.dnnFormPopup .ui-dialog-titlebar-close .ui-icon {
+  display: none;
+}
+
+/* ---- Dialog Body ---- */
+.ui-dialog.dnnFormPopup .ui-dialog-content {
+  padding: 1.25rem 1.25rem !important;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--default-700);
+  border: none !important;
+}
+
+/* ---- Dialog Button Pane ---- */
+.ui-dialog.dnnFormPopup .ui-dialog-buttonpane {
+  background: var(--default-50) !important;
+  border: none !important;
+  border-top: 1px solid var(--default-200) !important;
+  padding: 0.75rem 1.25rem !important;
+  margin: 0 !important;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ui-dialog.dnnFormPopup .ui-dialog-buttonset {
+  display: flex;
+  gap: 0.5rem;
+  float: none !important;
+}
+
+/* ---- Primary Button (Yes / OK) ---- */
+.ui-dialog.dnnFormPopup .dnnPrimaryAction,
+.ui-dialog.dnnFormPopup .ui-dialog-buttonset .ui-button:first-child {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600;
+  color: white !important;
+  background-color: var(--primary-600) !important;
+  border: none !important;
+  border-radius: var(--radius-button) !important;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ui-dialog.dnnFormPopup .dnnPrimaryAction:hover,
+.ui-dialog.dnnFormPopup .ui-dialog-buttonset .ui-button:first-child:hover {
+  background-color: var(--primary-700) !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+/* ---- Secondary Button (No / Cancel) ---- */
+.ui-dialog.dnnFormPopup .dnnSecondaryAction,
+.ui-dialog.dnnFormPopup .dnnConfirmCancel,
+.ui-dialog.dnnFormPopup .ui-dialog-buttonset .ui-button:not(:first-child) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500;
+  color: var(--default-600) !important;
+  background-color: white !important;
+  border: 1px solid var(--default-300) !important;
+  border-radius: var(--radius-button) !important;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.ui-dialog.dnnFormPopup .dnnSecondaryAction:hover,
+.ui-dialog.dnnFormPopup .dnnConfirmCancel:hover,
+.ui-dialog.dnnFormPopup .ui-dialog-buttonset .ui-button:not(:first-child):hover {
+  background-color: var(--default-50) !important;
+  border-color: var(--default-400) !important;
+  color: var(--default-700) !important;
+}
+
+/* ---- Overlay (backdrop) ---- */
+.ui-widget-overlay {
+  background: rgb(0 0 0 / 0.4) !important;
+  opacity: 1 !important;
+}

@@ -1,6 +1,6 @@
 <footer class="footer-section bg-gray-900 text-gray-300 text-sm leading-relaxed">
     <!-- Accent Bar -->
-    <div class="h-1 bg-gradient-to-r from-slate-600 to-cyan-700"></div>
+    <div class="h-1 bg-linear-to-r from-slate-600 to-cyan-700"></div>
 
     <!-- Footer Content -->
     <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
