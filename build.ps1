@@ -13,6 +13,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+$ScriptDir = $PSScriptRoot
 $version = "1.0.0"
 
 Write-Host "============================================" -ForegroundColor Cyan
@@ -44,9 +45,12 @@ New-Item -ItemType Directory -Path $tempDir -Force | Out-Null
 
 try {
     # Copy root .ascx files
-    Get-ChildItem -Path "." -Filter "*.ascx" -File | ForEach-Object {
-        Copy-Item $_.FullName -Destination $tempDir
-        Write-Host "    + $($_.Name)" -ForegroundColor DarkGray
+    $ascxFiles = Get-ChildItem -Path "." -Filter "*.ascx" -File
+    foreach ($f in $ascxFiles) {
+        Copy-Item $f.FullName -Destination $tempDir
+    }
+    if ($ascxFiles.Count -gt 0) {
+        Write-Host "    + *.ascx ($($ascxFiles.Count) files)" -ForegroundColor DarkGray
     }
 
     # Copy koi.json
@@ -56,39 +60,19 @@ try {
     }
 
 
-    # Copy partials folder
-    if (Test-Path ".\partials") {
-        $partialsDir = Join-Path $tempDir "partials"
-        Copy-Item ".\partials" -Destination $partialsDir -Recurse
-        Write-Host "    + partials\" -ForegroundColor DarkGray
-    }
-
-    # Copy css folder
-    if (Test-Path ".\css") {
-        $cssDir = Join-Path $tempDir "css"
-        Copy-Item ".\css" -Destination $cssDir -Recurse
-        Write-Host "    + css\" -ForegroundColor DarkGray
-    }
-
-    # Copy js folder
-    if (Test-Path ".\js") {
-        $jsDir = Join-Path $tempDir "js"
-        Copy-Item ".\js" -Destination $jsDir -Recurse
-        Write-Host "    + js\" -ForegroundColor DarkGray
+    # Copy folders
+    @("partials", "css", "js", "images", "fonts", "assets", "menus") | ForEach-Object {
+        if (Test-Path ".\$_") {
+            Copy-Item ".\$_" -Destination (Join-Path $tempDir $_) -Recurse
+            $count = (Get-ChildItem ".\$_" -Recurse -File).Count
+            Write-Host "    + $_\ ($count files)" -ForegroundColor DarkGray
+        }
     }
 
     # Copy skin.doctype.xml
     if (Test-Path ".\skin.doctype.xml") {
         Copy-Item ".\skin.doctype.xml" -Destination $tempDir
         Write-Host "    + skin.doctype.xml" -ForegroundColor DarkGray
-    }
-
-    # Copy any additional asset folders (images, fonts, css, js, etc.)
-    @("images", "fonts", "css", "js", "assets", "menus") | ForEach-Object {
-        if (Test-Path ".\$_") {
-            Copy-Item ".\$_" -Destination (Join-Path $tempDir $_) -Recurse
-            Write-Host "    + $_\" -ForegroundColor DarkGray
-        }
     }
 
     # Create Resources.zip
@@ -108,9 +92,12 @@ New-Item -ItemType Directory -Path $containerTempDir -Force | Out-Null
 
 try {
     if (Test-Path ".\containers") {
-        Get-ChildItem -Path ".\containers" -Filter "*.ascx" -File | ForEach-Object {
-            Copy-Item $_.FullName -Destination $containerTempDir
-            Write-Host "    + $($_.Name)" -ForegroundColor DarkGray
+        $containerFiles = Get-ChildItem -Path ".\containers" -Filter "*.ascx" -File
+        foreach ($f in $containerFiles) {
+            Copy-Item $f.FullName -Destination $containerTempDir
+        }
+        if ($containerFiles.Count -gt 0) {
+            Write-Host "    + containers\ ($($containerFiles.Count) files)" -ForegroundColor DarkGray
         }
     }
 
@@ -129,21 +116,19 @@ $packageTemp = Join-Path $env:TEMP "TailwindDNN_pkg_$(Get-Random)"
 New-Item -ItemType Directory -Path $packageTemp -Force | Out-Null
 
 try {
-    # Copy manifest
-    Copy-Item ".\manifest.dnn" -Destination $packageTemp
-    Write-Host "    + manifest.dnn" -ForegroundColor DarkGray
-
-    # Copy skin .ascx files (DNN SkinInstaller needs them at package root)
-    Get-ChildItem -Path "." -Filter "*.ascx" -File | ForEach-Object {
-        Copy-Item $_.FullName -Destination $packageTemp
-        Write-Host "    + $($_.Name)" -ForegroundColor DarkGray
-    }
-
-    # Copy container .ascx files (DNN ContainerInstaller needs them at package root)
-    if (Test-Path ".\containers") {
-        Get-ChildItem -Path ".\containers" -Filter "*.ascx" -File | ForEach-Object {
-            Copy-Item $_.FullName -Destination $packageTemp
-            Write-Host "    + $($_.Name) (container)" -ForegroundColor DarkGray
+    # Copy root files
+    $rootFiles = @(
+        "manifest.dnn",
+        "License.txt",
+        "ReleaseNotes.txt"
+    )
+    foreach ($file in $rootFiles) {
+        $src = Join-Path $ScriptDir $file
+        if (Test-Path $src) {
+            Copy-Item $src (Join-Path $packageTemp $file)
+            Write-Host "    + $file" -ForegroundColor DarkGray
+        } else {
+            Write-Warning "Missing: $file"
         }
     }
 
@@ -153,11 +138,23 @@ try {
     Copy-Item $containerResourcesZip -Destination $packageTemp
     Write-Host "    + ContainerResources.zip" -ForegroundColor DarkGray
 
-    # Copy License and Release Notes if they exist
-    @("License.txt", "ReleaseNotes.txt") | ForEach-Object {
-        if (Test-Path ".\$_") {
-            Copy-Item ".\$_" -Destination $packageTemp
-            Write-Host "    + $_" -ForegroundColor DarkGray
+    # Copy skin .ascx files (DNN SkinInstaller needs them at package root)
+    $skinAscx = Get-ChildItem -Path "." -Filter "*.ascx" -File
+    foreach ($f in $skinAscx) {
+        Copy-Item $f.FullName -Destination $packageTemp
+    }
+    if ($skinAscx.Count -gt 0) {
+        Write-Host "    + Skin\ ($($skinAscx.Count) files)" -ForegroundColor DarkGray
+    }
+
+    # Copy container .ascx files (DNN ContainerInstaller needs them at package root)
+    if (Test-Path ".\containers") {
+        $containerAscx = Get-ChildItem -Path ".\containers" -Filter "*.ascx" -File
+        foreach ($f in $containerAscx) {
+            Copy-Item $f.FullName -Destination $packageTemp
+        }
+        if ($containerAscx.Count -gt 0) {
+            Write-Host "    + Containers\ ($($containerAscx.Count) files)" -ForegroundColor DarkGray
         }
     }
 

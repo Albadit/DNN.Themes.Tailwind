@@ -5,10 +5,10 @@
 <!--#include file="partials/_header.ascx" -->
 
 <!-- Main Content -->
-<main class="flex items-center">
-    <div id="BannerPane" runat="server"></div>
-    <div id="ContentPane" class="w-full flex flex-col items-center" runat="server"></div> 
-    <div id="FluidPane" runat="server"></div>
+<main class="flex-1">
+  <div id="BannerPane" runat="server"></div>
+  <div id="ContentPane" class="mx-auto max-w-7xl px-8 w-full" runat="server"></div> 
+  <div id="FluidPane" runat="server"></div>
 </main>
 
 <!-- Footer -->
