@@ -133,6 +133,9 @@ TailwindDNN/
 ├── License.txt               ← MIT License
 ├── ReleaseNotes.txt          ← Version history
 │
+├── .vscode/                  ← VS Code workspace settings
+│   └── settings.json         ← Tailwind CSS IntelliSense configuration
+│
 ├── containers/               ← Module containers (wrappers around modules)
 │   ├── Title.ascx            ← Container WITH a module title
 │   └── None.ascx             ← Container WITHOUT a module title (bare pane)
@@ -149,7 +152,7 @@ TailwindDNN/
 │
 ├── partials/                 ← Reusable parts included in the skin
 │   ├── _registers.ascx       ← DNN control registrations (required)
-│   ├── _includes.ascx        ← CSS/JS includes + Tailwind config
+│   ├── _includes.ascx        ← CSS/JS includes, fonts, Tailwind + Lucide config
 │   ├── _header.ascx          ← Header with logo, navigation, mobile menu
 │   ├── _footer.ascx          ← Footer with links, terms, copyright
 │   └── css/                  ← Tailwind CSS style blocks
@@ -225,7 +228,7 @@ Containers wrap around individual DNN modules. This skin comes with two:
 
 ### Styling with Tailwind CSS
 
-This skin uses **Tailwind CSS 4.1** running in the browser. That means:
+This skin uses **Tailwind CSS 4.2.0** running in the browser. That means:
 
 - **No build step for CSS** — Tailwind compiles classes on-the-fly in the browser.
 - You style elements by adding Tailwind utility classes directly in the HTML.
