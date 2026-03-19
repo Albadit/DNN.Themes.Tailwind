@@ -49,6 +49,12 @@ try {
         Write-Host "    + $($_.Name)" -ForegroundColor DarkGray
     }
 
+    # Copy koi.json
+    if (Test-Path ".\koi.json") {
+        Copy-Item ".\koi.json" -Destination $tempDir
+        Write-Host "    + koi.json" -ForegroundColor DarkGray
+    }
+
 
     # Copy partials folder
     if (Test-Path ".\partials") {
@@ -57,11 +63,18 @@ try {
         Write-Host "    + partials\" -ForegroundColor DarkGray
     }
 
-    # Copy src folder (js, font, css, etc.)
-    if (Test-Path ".\src") {
-        $srcDir = Join-Path $tempDir "src"
-        Copy-Item ".\src" -Destination $srcDir -Recurse
-        Write-Host "    + src\" -ForegroundColor DarkGray
+    # Copy css folder
+    if (Test-Path ".\css") {
+        $cssDir = Join-Path $tempDir "css"
+        Copy-Item ".\css" -Destination $cssDir -Recurse
+        Write-Host "    + css\" -ForegroundColor DarkGray
+    }
+
+    # Copy js folder
+    if (Test-Path ".\js") {
+        $jsDir = Join-Path $tempDir "js"
+        Copy-Item ".\js" -Destination $jsDir -Recurse
+        Write-Host "    + js\" -ForegroundColor DarkGray
     }
 
     # Copy skin.doctype.xml
