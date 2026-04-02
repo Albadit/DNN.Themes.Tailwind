@@ -1,6 +1,29 @@
 @using DotNetNuke.Web.DDRMenu;
 @using System.Dynamic;
+@using DotNetNuke.Common;
+@using DotNetNuke.Entities.Portals;
+@using DotNetNuke.Entities.Users;
 @inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<dynamic>
+
+@{
+    var ps = PortalSettings.Current;
+    var user = UserController.Instance.GetCurrentUserInfo();
+    bool isAuth = HttpContext.Current.Request.IsAuthenticated;
+
+    // Logo
+    string logoSrc = !string.IsNullOrEmpty(ps.LogoFile) ? ps.HomeDirectory + ps.LogoFile : "";
+    string homeUrl = Globals.NavigateURL(ps.HomeTabId);
+
+    // Login / Logout
+    string loginUrl = isAuth
+        ? Globals.NavigateURL(ps.ActiveTab.TabID, "Logoff")
+        : Globals.LoginURL(HttpContext.Current.Request.RawUrl, false);
+    string loginText = isAuth ? "Logout" : "Login";
+
+    // User profile
+    string userName = isAuth ? user.DisplayName : "";
+    string userUrl = isAuth ? Globals.UserProfileURL(user.UserID) : "";
+}
 
 @helper RenderNodes(dynamic nodes, bool isRoot) {
     <ul class="@(isRoot ? "w-full flex lg:flex-row flex-col gap-2" : "py-1 list-none m-0")">
@@ -65,4 +88,79 @@
     </ul>
 }
 
-@RenderNodes(Model.Source.root.Children, true)
+<header class="sticky top-0 z-50">
+    <!-- Top Bar: User/Login -->
+    <div class="hidden lg:block bg-slate-800 text-white">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-10 items-center justify-end gap-4 text-sm">
+                <a href="@loginUrl" class="text-white hover:text-cyan-300 transition-colors font-medium">@loginText</a>
+                @if (isAuth)
+                {
+                    <a href="@userUrl" class="text-cyan-300 hover:text-white transition-colors">@userName</a>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header: Logo + Nav -->
+    <div class="bg-slate-700">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+
+                <!-- Logo -->
+                <div class="flex shrink-0 items-center">
+                    @if (!string.IsNullOrEmpty(logoSrc))
+                    {
+                        <a href="@homeUrl"><img src="@logoSrc" alt="@ps.PortalName" class="h-12 w-auto" /></a>
+                    }
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex lg:items-center lg:gap-2" aria-label="Main Navigation">
+                    @RenderNodes(Model.Source.root.Children, true)
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button type="button"
+                        class="hamburger lg:hidden"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        onclick="this.classList.toggle('open'); var m=document.getElementById('mobile-menu'); m.classList.toggle('open'); this.setAttribute('aria-expanded', m.classList.contains('open'));">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="lg:hidden bg-slate-700">
+        <div class="flex lg:hidden p-4">
+            @RenderNodes(Model.Source.root.Children, true)
+        </div>
+        <div class="lg:hidden border-t border-white/10 px-4 py-3">
+            <div class="flex items-center gap-3 text-sm">
+                @if (isAuth)
+                {
+                    <a href="@userUrl" class="text-white/70">@userName</a>
+                }
+                <a href="@loginUrl" class="text-cyan-300 text-xs font-medium">@loginText</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+(function(){
+    var mql = window.matchMedia('(min-width: 1024px)');
+    function closeMobile(){
+        if(!mql.matches) return;
+        var btn = document.querySelector('.hamburger');
+        var menu = document.getElementById('mobile-menu');
+        if(btn) { btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+        if(menu) menu.classList.remove('open');
+    }
+    mql.addEventListener('change', closeMobile);
+})();
+</script>

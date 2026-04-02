@@ -2,7 +2,7 @@
 <!--#include file="partials/_includes.ascx" -->
 
 <!-- Header -->
-<!--#include file="partials/_header.ascx" -->
+<dnn:MENU runat="server" id="dnnMENU" MenuStyle="menus/header" NodeSelector="*,0,2" />
 
 <!-- Main Content -->
 <main class="flex-1">
@@ -12,4 +12,4 @@
 </main>
 
 <!-- Footer -->
-<!--#include file="partials/_footer.ascx" -->
+<dnn:MENU runat="server" id="dnnMENU_Footer" MenuStyle="menus/footer" NodeSelector="*,0,1" />
