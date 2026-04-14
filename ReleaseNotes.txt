@@ -1,10 +1,10 @@
-TailwindDNN v1.0.0 Release Notes
+DNN.Themes.Tailwind v1.0.0 Release Notes
 =================================
 
-Initial release of TailwindDNN skin for DNN 10.
+Initial release of DNN.Themes.Tailwind skin for DNN 10.
 
 Features:
-- Built with Tailwind CSS 4.1
+- Built with Tailwind CSS 4.2
 - Mobile-first responsive layout
 - Sticky navigation
 - Hero sections
