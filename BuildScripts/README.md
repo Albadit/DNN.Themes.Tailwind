@@ -43,7 +43,7 @@ Open `<Project.Name>.sln` and build with `Ctrl+Shift+B` or **Build > Build Solut
 
 When building in **Release** mode, the `ModulePackage.targets` automatically creates two DNN install packages in the `install/` folder:
 
-- `<Project.Name>_<version>_Install.zip` — Install package (views, CSS, JS, resources, DLL, SQL providers, manifest)
-- `<Project.Name>_<version>_Source.zip` — Source package (everything above plus source code, csproj, sln)
+- `<Project.Name>_<version>_Install.zip` - Install package (views, CSS, JS, resources, DLL, SQL providers, manifest)
+- `<Project.Name>_<version>_Source.zip` - Source package (everything above plus source code, csproj, sln)
 
 These zip files can be installed via the DNN **Extensions > Install Extension** page.
