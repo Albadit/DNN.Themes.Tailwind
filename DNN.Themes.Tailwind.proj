@@ -92,6 +92,18 @@
           DestinationFolder="$(MSBuildProjectDirectory)\Package"
           Condition="Exists('$(MSBuildProjectDirectory)\ContainerResources.$(Extension)')" />
 
+    <!-- Skin/container .ascx files declared in the manifest must be at the root of the install zip -->
+    <ItemGroup>
+      <SkinAscxFiles Include="default.ascx" Condition="Exists('default.ascx')" />
+      <ContainerAscxFiles Include="containers\*.ascx" />
+    </ItemGroup>
+    <Copy SourceFiles="@(SkinAscxFiles)"
+          DestinationFolder="$(MSBuildProjectDirectory)\Package"
+          Condition="'@(SkinAscxFiles)' != ''" />
+    <Copy SourceFiles="@(ContainerAscxFiles)"
+          DestinationFolder="$(MSBuildProjectDirectory)\Package"
+          Condition="'@(ContainerAscxFiles)' != ''" />
+
     <!-- Zip the install package -->
     <CreateItem Include="$(MSBuildProjectDirectory)\Package\**\*.*">
       <Output TaskParameter="Include" ItemName="OutputContent" />
