@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <!-- Skin Package -->
+    <package name="DNN.Themes.Tailwind" type="Skin" version="01.00.00">
+      <friendlyName>DNN.Themes.Tailwind</friendlyName>
+      <description>A modern, responsive DNN 10 skin built with Tailwind CSS 4.1. Features a clean design with mobile-first responsive layout, sticky navigation, hero sections, and custom containers.</description>
+      <owner>
+        <name>DNN.Themes.Tailwind</name>
+        <organization>DNN.Themes.Tailwind</organization>
+        <url>https://example.com</url>
+        <email>info@example.com</email>
+      </owner>
+      <license src="License.txt" />
+      <releaseNotes src="ReleaseNotes.txt" />
+      <dependencies>
+        <dependency type="CoreVersion">10.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Skin">
+          <skinFiles>
+            <basePath>Portals\_default\Skins\DNN.Themes.Tailwind</basePath>
+            <skinName>DNN.Themes.Tailwind</skinName>
+            <skinFile>
+              <path></path>
+              <name>default.ascx</name>
+            </skinFile>
+          </skinFiles>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>Portals\_default\Skins\DNN.Themes.Tailwind</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+      </components>
+    </package>
+
+    <!-- Container Package -->
+    <package name="DNN.Themes.Tailwind Containers" type="Container" version="01.00.00">
+      <friendlyName>DNN.Themes.Tailwind Containers</friendlyName>
+      <description>Containers for the DNN.Themes.Tailwind skin.</description>
+      <owner>
+        <name>DNN.Themes.Tailwind</name>
+        <organization>DNN.Themes.Tailwind</organization>
+        <url>https://example.com</url>
+        <email>info@example.com</email>
+      </owner>
+      <license src="License.txt" />
+      <releaseNotes src="ReleaseNotes.txt" />
+      <components>
+        <component type="Container">
+          <containerFiles>
+            <basePath>Portals\_default\Containers\DNN.Themes.Tailwind</basePath>
+            <containerName>DNN.Themes.Tailwind</containerName>
+            <containerFile>
+              <path></path>
+              <name>Title.ascx</name>
+            </containerFile>
+            <containerFile>
+              <path></path>
+              <name>None.ascx</name>
+            </containerFile>
+          </containerFiles>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>Portals\_default\Containers\DNN.Themes.Tailwind</basePath>
+            <resourceFile>
+              <name>ContainerResources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
